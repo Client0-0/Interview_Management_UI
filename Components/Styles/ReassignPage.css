@@ -1,0 +1,168 @@
+
+
+
+.reassign-card {
+  width: 100%;
+  
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+
+  /* REMOVE max-width and center alignment */
+  /* max-width: 900px; */
+  /* margin: 0 auto; */
+
+  /* Make it take full width always */
+  box-sizing: border-box;
+
+}
+
+.section-title {
+  font-size: 18px;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.candidate-box {
+  background: #eef2f7;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+label {
+  font-size: 13px;
+  color: #555;
+}
+p {
+  margin-top: 2px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Radio Buttons */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-item {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Notes */
+.notes-section textarea {
+  width: 100%;
+  height: 110px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 8px;
+  padding: 10px;
+}
+
+/* Panel Cards Grid */
+.panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.panel-card {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.panel-card:hover {
+  border-color: #7b61ff;
+}
+
+.panel-card.selected {
+  border-color: #6e63f7;
+  box-shadow: 0 0 6px rgba(113, 90, 255, 0.4);
+}
+
+.panel-card.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.panel-icon i {
+  font-size: 20px;
+  padding: 10px;
+  background: #e5e7eb;
+  border-radius: 50%;
+}
+
+.current-panel-tag {
+  font-size: 12px;
+  padding: 3px 6px;
+  background: #ccc;
+  border-radius: 4px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+/* Buttons */
+.bottom-buttons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  width: 100%;
+}
+
+.cancel-btn,
+.confirm-btn {
+  flex: 1 1 auto;       /* This makes both buttons stretch equally */
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+}
+/* Cancel */
+.cancel-btn {
+  border: 1px solid #aaa;
+  background: white;
+  width: 10%;
+}
+
+/* Confirm */
+.confirm-btn {
+  background: #6e63f7;
+  color: white;
+  border: none;
+  
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .reassign-card {
+    padding: 18px;
+  }
+  .panel-grid {
+    grid-template-columns: 1fr;
+  }
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}

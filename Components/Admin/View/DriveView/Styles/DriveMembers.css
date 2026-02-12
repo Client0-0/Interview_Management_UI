@@ -1,0 +1,111 @@
+/* ================= ROLE SWITCH ================= */
+
+.drive-members-wrapper {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.role-switch {
+  display: flex;
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+/* ================= ROLE BUTTON ================= */
+.role-btn {
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  color: #6b7280;
+  background: transparent;
+  transition: all 0.25s ease;
+  border-right: 1px solid #e5e7eb;
+}
+
+.role-btn:last-child {
+  border-right: none;
+}
+
+/* hover */
+.role-btn:hover {
+  background: #eef2ff;
+  color: #1d4ed8;
+}
+
+/* active tab */
+.role-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.role-switch button {
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* ================= HOVER ================= */
+
+.role-switch button:hover {
+  border-color: #9ca3af;
+  background-color: #f9fafb;
+}
+
+/* ================= ACTIVE ================= */
+
+.role-switch button.active {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+  color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+/* ================= SEPARATOR ================= */
+.role-separator {
+  border: none;
+  height: 1px;
+  background-color: #d1d5db;
+  margin: 8px 0 16px 0;
+  border-top: 1px solid #e5e7eb
+}
+
+/* ================= ROLE CONTENT ================= */
+.role-content {
+  width: 100%;
+}
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .role-switch {
+    gap: 10px;
+  }
+
+  .role-switch button {
+    flex: 1;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .role-switch {
+    flex-direction: column;
+  }
+
+  .role-switch button {
+    width: 100%;
+  }
+}

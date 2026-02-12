@@ -1,0 +1,146 @@
+/* Wrapper */
+.fp-wrapper {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(to bottom right, #eef3ff, #f7f9ff);}
+
+/* Card */
+.fp-card {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  padding: 35px 30px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+/* Icon Circle */
+.fp-icon-circle {
+  width: 70px;
+  height: 70px;
+  background: #e7e4ff;
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fp-lock-icon {
+  font-size: 26px;
+   color: #5d4dff;
+}
+
+/* Title / Subtitle */
+.fp-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 8px;
+}
+
+.fp-subtitle {
+  font-size: 14px;
+  color:  black;
+  margin-bottom: 25px;
+}
+
+/* Form */
+.fp-form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.fp-form-group label {
+  color:black;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Input Box */
+.fp-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.fp-input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color:black;
+}
+
+.fp-input-box input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+}
+
+/* .fp-input-box input:focus {
+  border-color: #6a6aff;
+  background: #2a2a2a;
+} */
+
+/* Error Message */
+small {
+  display: block;
+  margin-top: 5px;
+  color: #ff6b6b;
+}
+
+/* Button */
+.fp-btn-submit {
+  width: 100%;
+  padding: 12px;
+  background: #6d6dff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.fp-btn-submit:hover {
+  background: #5e5ee6;
+}
+
+/* Back link */
+.fp-back-text {
+  margin-top: 18px;
+}
+
+.fp-back-text a {
+  color: #0808ee;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.fp-back-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .fp-card {
+    padding: 28px 20px;
+  }
+
+  .fp-title {
+    font-size: 20px;
+  }
+
+  .fp-subtitle {
+    font-size: 13px;
+  }
+}

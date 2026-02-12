@@ -1,0 +1,263 @@
+/* =====================================================
+   STATS GRID (DESKTOP → MOBILE)
+===================================================== */
+
+.stats-grid {
+  display: grid;
+  padding: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 24px 20px;
+  border-radius: 14px;
+  min-height: 150px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.stat-card .title {
+  font-size: 18px;      /* increase from default */
+  font-weight: 700;
+  color: #616365;
+  margin-bottom: 6px;
+}
+.stat-card .value1 {
+  font-size: 20px;
+  font-weight: 700;
+  
+  color: #333;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.stat-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.tab {
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #555;
+}
+
+.tab.active {
+  border-bottom: 3px solid #4f46e5;
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+/* 1024px → Two stats per row */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 768px → Stack vertically */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    min-height: 130px;
+    padding: 22px 18px;
+  }
+
+  .stat-icon {
+    font-size: 36px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+}
+
+/* 480px → Adjustments for small screen */
+@media (max-width: 480px) {
+  .stat-card {
+    padding: 18px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .stat-icon {
+    font-size: 32px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE TABS
+===================================================== */
+
+.tabs {
+  width: 100%;
+  background: #f3f4f6;
+  padding: 12px 18px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/* Shared icon wrapper */
+.stat-card .icon {
+  font-size: 32px;
+  padding: 14px;
+  border-radius: 60%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Blue Theme */
+.icon-blue {
+  color: #4e73df;
+  background: rgba(78, 115, 223, 0);
+}
+
+/* Green Theme */
+.icon-green {
+  color: #1cc88a;
+  background: rgba(28, 200, 138, 0);
+}
+
+/* Cyan Theme */
+.icon-cyan {
+  color: #36b9cc;
+  background: rgba(54, 185, 204, 0);
+}
+
+/* Orange Theme */
+.icon-orange {
+  color: #f6c23e;
+  background: rgba(246, 194, 62, 0);
+}
+
+/* Red Theme */
+.icon-red {
+  color: #e74a3b;
+  background: rgba(231, 74, 59, 0);
+}
+
+/* Grey Theme */
+.icon-grey {
+  color: #858796;
+  background: rgba(133, 135, 150, 0);
+}
+
+
+.tab {
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #4b5563;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.2s;
+}
+
+.tab:hover {
+  background: #e5e7eb;
+}
+
+.tab.active {
+  background: #e5e7eb;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* -------- TABLETS (<=1024px) -------- */
+@media (max-width: 1024px) {
+  .tabs {
+    gap: 12px;
+    padding: 12px;
+  }
+  .tab {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+}
+
+/* -------- SMALL TABLETS (<=768px) -------- */
+@media (max-width: 768px) {
+  .tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 10px;
+    column-gap: 10px;
+    padding: 10px;
+  }
+
+  .tab {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+  }
+}
+
+/* -------- MOBILE (<=480px) -------- */
+@media (max-width: 480px) {
+  .tabs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .tab {
+    padding: 12px 0;
+    font-size: 13px;
+  }
+}
+
+/* -------- EXTRA SMALL (<=360px) -------- */
+@media (max-width: 360px) {
+  .tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .tab {
+    width: 100%;
+    padding: 14px 0;
+    font-size: 14px;
+  }
+}

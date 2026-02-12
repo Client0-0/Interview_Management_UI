@@ -1,0 +1,145 @@
+/* ================= TECH STACK AUTOCOMPLETE ================= */
+.skill-suggestions {
+  position: absolute;
+  z-index: 20;
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  margin-top: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+  width: 100%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  list-style: none;
+}
+
+.skill-suggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.skill-suggestions li:hover {
+  background: #f3f6fb;
+}
+
+/* ================= SELECTED SKILLS ================= */
+.selected-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.skill-chip i {
+  margin-left: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.skill-chip i:hover {
+  opacity: 1;
+}
+
+/* ================= FIX POSITIONING ================= */
+label {
+  position: relative;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+/* ================= MODAL GRID RESPONSIVE ================= */
+.modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid transparent; /* default transparent */
+  background: #f3f6fb; /* light background */
+  color: #1f2937; /* dark text */
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* PRIMARY BUTTON */
+.btn.primary {
+  background: #2563eb; /* blue */
+  color: #ffffff;
+  border: 1px solid #2563eb;
+}
+
+.btn.primary:hover {
+  background: #1e40af; /* darker blue */
+  border-color: #1e40af;
+}
+
+/* CANCEL BUTTON */
+.btn:not(.primary) {
+  background: #ffffff; /* white */
+  color: #1f2937; /* dark text */
+  border: 1px solid #d0d7de; /* outer border */
+}
+
+.btn:not(.primary):hover {
+  background: #f3f6fb;
+}
+
+
+@media (max-width: 768px) {
+  .modal-grid {
+    grid-template-columns: 1fr; /* single column on tablet/mobile */
+  }
+}
+
+/* ================= BUTTONS RESPONSIVE ================= */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.modal-actions .btn {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 480px) {
+  .modal-actions .btn {
+    width: 100%; /* buttons stack on very small screens */
+  }
+}
+
+/* ================= INPUT FULL WIDTH ================= */
+.modal-grid input,
+.modal-grid select {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #d0d7de;
+  font-size: 14px;
+}

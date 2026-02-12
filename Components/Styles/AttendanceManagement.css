@@ -1,0 +1,240 @@
+/* OUTER CONTAINER */
+.search-filter-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 85%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.filter-wrapper {
+  position: relative;
+}
+
+.drive-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  z-index: 10;
+}
+
+.drive-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.drive-item:hover {
+  background-color: #f0f0f0;
+}
+
+.drive-header-title {
+  margin: 24px 0 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.attendanceParagraph {
+  width: 95%;
+  max-width: 1600px;
+  border: 1px solid #ddd;
+  padding: 30px;
+  border-radius: 12px;
+  background: #f7f7f7;
+  margin-left: 0;
+}
+.drive-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.filter-btn {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.drive-dropdown {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ddd;
+  margin-top: 6px;
+  z-index: 10;
+}
+
+.drive-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.drive-item:hover {
+  background: #f2f2f2;
+}
+
+/* LIST WRAPPER */
+.attendance-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* -----------------------------------
+   CANDIDATE CARD — HORIZONTAL EXPANDED
+----------------------------------- */
+.candidate-card {
+  width: 90%;
+  max-width: 1550px;
+  border: 1px solid #cfcfcf;
+  padding: 36px 40px;
+  border-radius: 14px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 240px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  margin-top: 15px;
+}
+
+/* TOP SECTION */
+.top-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* LEFT SIDE */
+.candidate-left {
+  flex: 1.4;
+}
+
+.candidate-left h3 {
+  margin: 0;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.candidate-left p {
+  font-size: 17px;
+  margin: 6px 0;
+}
+
+/* ROUND TAG */
+.round {
+  background-color: #e0e7ff;
+  color: #3730a3;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* RIGHT SIDE PANEL CARD */
+.panel-right {
+  flex: 1;
+  background-color: oklch(0.97 0.03 265);
+  padding: 22px 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 15px;
+}
+
+.reassign-btn-right {
+  background-color: #f8dbf0;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* ATTENDANCE ROW */
+.attendance-row {
+  width: 100%;
+  border-top: 1px solid #ddd;
+  padding-top: 22px;
+}
+
+/* BUTTONS ROW */
+.attendance-buttons {
+  display: flex;
+  gap: 18px;
+  width: 100%;
+}
+
+.present-btn,
+.absent-btn {
+  flex: 1;
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 100;
+  font-size: 18px;
+}
+
+/* UPDATED COLORS */
+.present-btn {
+  background-color: #0aad36;  /* light green */
+}
+
+.absent-btn {
+  background-color: #f93838;  /* light orange */
+}
+
+/* MARKED ATTENDANCE BLOCK */
+.marked-attendance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: oklch(93.383% 0.00301 264.781);
+  padding: 18px 20px;
+  border-radius: 10px;
+  font-size: 17px;
+}
+
+.change-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .candidate-card {
+    max-width: 100%;
+    padding: 26px;
+  }
+  .top-section {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .candidate-card {
+    padding: 22px;
+    min-height: 180px;
+  }
+  .attendance-buttons {
+    flex-direction: column;
+  }
+}

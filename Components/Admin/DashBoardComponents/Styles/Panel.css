@@ -1,0 +1,59 @@
+.actions-cell {
+  position: relative;
+}
+
+.menu-container {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 10px;
+}
+
+.menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 140px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  display: none; /* 🔥 hidden */
+  z-index: 100;
+}
+
+.menu-container:hover .menu-dropdown {
+  display: block;
+}
+
+.menu-item {
+  width: 100%;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.menu-item:hover {
+  background: #f4f4f4;
+}
+
+.edit-btn i {
+  color: #4e73df;
+}
+
+.deactivate-btn i {
+  color: #e74a3b;
+}

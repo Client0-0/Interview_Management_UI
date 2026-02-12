@@ -1,0 +1,245 @@
+/* soft-blue background */
+.login-wrapper {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #eef3ff, #f7f9ff);
+  padding: 20px;
+}
+
+/* main card */
+.login-card {
+  width: 420px;
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+/* top icon bubble */
+.icon-circle {
+  width: 70px;
+  height: 70px;
+  background: #e7e4ff;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lock-icon {
+  font-size: 32px;
+  color: #5d4dff;
+}
+
+/* headings */
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.subtitle {
+  margin-top: 4px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* labels */
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* input container */
+.input-box {
+  display: flex;
+  align-items: center;
+  background: #f7f7fb;
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  border-radius: 10px;
+  gap: 10px;
+}
+
+small {
+    color: red;
+}
+
+select {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+select:focus {
+    border: none !important;
+    box-shadow: none !important;
+    box-sizing:unset;
+}
+
+.input-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+}
+
+input:focus {
+    box-shadow: none !important;
+}
+
+/* icons inside input */
+.input-icon,
+.eye-icon {
+  font-size: 17px;
+  opacity: 0.6;
+}
+
+/* remember + forgot */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.options .forgot {
+  color: #5d4dff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* sign in button */
+.btn-login {
+  width: 100%;
+  background: #4d3cff !important;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+
+.btn-login:hover {
+  opacity: 0.9;
+}
+
+/* bottom signup text */
+.signup-text {
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: #5d4dff;
+  font-weight: 500;
+  text-decoration: none;
+}
+/* ——— Existing desktop/tablet styles remain the same ——— */
+
+
+/* ============================
+   📱 Mobile Responsive Styles
+   ============================ */
+@media (max-width: 480px) {
+  .login-wrapper {
+    padding: 10px;
+  }
+
+  .login-card {
+    width: 100%;
+    padding: 30px 22px;
+    border-radius: 16px;
+  }
+
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+
+  .lock-icon {
+    font-size: 28px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .input-box {
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+
+  .input-box input {
+    font-size: 13px;
+  }
+
+  .options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .btn-login {
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 8px;
+  }
+
+  .signup-text {
+    font-size: 13px;
+  }
+}
+
+
+/* ============================
+   📱 Small Phones (under 360px)
+   ============================ */
+@media (max-width: 360px) {
+  .login-card {
+    padding: 25px 18px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+
+  .input-box {
+    padding: 9px 10px;
+  }
+
+  .btn-login {
+    font-size: 14px;
+    padding: 11px;
+  }
+}

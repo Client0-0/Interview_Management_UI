@@ -1,0 +1,316 @@
+/* ================= GENERAL ================= */
+.drive-member-card {
+  width: 100%;
+  font-family: "Segoe UI", sans-serif;
+  margin-top: 16px;
+}
+
+/* ================= HEADER ================= */
+.member-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn.add-btn {
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn.add-btn:hover {
+  background: #1d4ed8;
+}
+
+.btn.primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn.primary:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn.secondary {
+  background: #6b7280;
+  color: #fff;
+}
+
+/* ================= MEMBER TABLE ================= */
+.member-table {
+  width: 100%;
+  font-size: 14px;
+}
+
+.table-head,
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 10px 14px;
+}
+
+.table-head {
+  background: #f3f4f6;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.table-row {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-row:hover {
+  background: #f9fafb;
+}
+
+.email {
+  word-break: break-word;
+}
+
+/* ================= ACTIONS ================= */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.icon-btn.view {
+  color: #2563eb;
+}
+
+.icon-btn.remove {
+  color: #ef4444;
+}
+
+/* ================= OVERLAY ================= */
+.hr-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* ================= MODAL ================= */
+.hr-modal {
+  width: 95%;
+  max-width: 780px;
+  max-height: 85vh;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px;
+  overflow-y: auto;
+  z-index: 10000;
+}
+
+.hr-modal h4 {
+  margin-bottom: 12px;
+}
+
+/* ================= SELECT HR TABLE ================= */
+.hr-select-table {
+  margin-top: 12px;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.hr-select-head,
+.hr-select-row {
+  display: grid;
+  grid-template-columns: 40px 2fr 3fr 2fr;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+.hr-select-head {
+  background: #f3f4f6;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.hr-select-row {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.hr-select-row span {
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.hr-select-row:hover {
+  background: #f9fafb;
+}
+
+.hr-select-row input {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* ================= EMPTY STATE ================= */
+.empty-text {
+  padding: 12px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ================= MODAL ACTIONS ================= */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* ===== REMOVE CONFIRM MODAL ===== */
+.confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.confirm-modal {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-modal h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #111827;
+}
+
+.confirm-text {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.confirm-details {
+  background: #f9fafb;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.confirm-details div {
+  margin-bottom: 4px;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* ===== BUTTONS ===== */
+.btn.danger {
+  background-color: #ef4444;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+
+.btn.danger:hover {
+  background-color: #dc2626;
+}
+
+.table-head span:nth-child(1),
+.table-row span:nth-child(1) {
+  text-align: left;
+}
+
+.table-head span:nth-child(2),
+.table-row span:nth-child(2) {
+  text-align: center;
+}
+
+.table-head span:nth-child(3),
+.table-row .actions {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+
+/* ===== MOBILE ===== */
+@media (max-width: 480px) {
+  .confirm-modal {
+    margin: 0 12px;
+    padding: 16px;
+  }
+
+  .confirm-actions {
+    flex-direction: column;
+  }
+
+  .confirm-actions .btn {
+    width: 100%;
+  }
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .table-head,
+  .table-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .hr-select-head {
+    display: none;
+  }
+
+  .hr-select-row {
+    display: block;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 12px;
+  }
+
+  .hr-select-row input {
+    margin-bottom: 8px;
+  }
+
+  .hr-select-row span {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .member-header {
+    align-items: flex-end;
+  }
+}

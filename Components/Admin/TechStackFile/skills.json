@@ -1,0 +1,148 @@
+{
+  "programming_languages": [
+    "C",
+    "C++",
+    "C#",
+    "Java",
+    "Python",
+    "Go",
+    "Rust",
+    "JavaScript",
+    "TypeScript",
+    "PHP"
+  ],
+
+  "dotnet_technologies": [
+    ".NET",
+    ".NET Core",
+    ".NET 6",
+    ".NET 7",
+    ".NET 8",
+    "ASP.NET",
+    "ASP.NET Core",
+    "ASP.NET MVC",
+    "ASP.NET Web API",
+    "Blazor",
+    "Razor Pages",
+    "Entity Framework",
+    "Entity Framework Core",
+    "Dapper",
+    "ADO.NET",
+    "LINQ",
+    "SignalR"
+  ],
+
+  "backend_frameworks": [
+    "Spring",
+    "Spring Boot",
+    "Hibernate",
+    "Node.js",
+    "Express.js",
+    "NestJS",
+    "Django",
+    "Flask",
+    "FastAPI",
+    "Laravel"
+  ],
+
+  "frontend_technologies": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Angular",
+    "Vue",
+    "Next.js",
+    "Bootstrap",
+    "Tailwind CSS",
+    "Material UI",
+    "jQuery",
+    "Redux"
+  ],
+
+  "api_and_services": [
+    "REST API",
+    "RESTful Services",
+    "Web API",
+    "SOAP",
+    "GraphQL",
+    "gRPC",
+    "Microservices",
+    "API Gateway",
+    "Ocelot",
+    "YARP"
+  ],
+
+  "databases": [
+    "SQL",
+    "SQL Server",
+    "MySQL",
+    "PostgreSQL",
+    "Oracle",
+    "MongoDB",
+    "Cosmos DB",
+    "Redis",
+    "SQLite"
+  ],
+
+  "orm_and_data_access": [
+    "Entity Framework",
+    "Entity Framework Core",
+    "Dapper",
+    "ADO.NET",
+    "NHibernate",
+    "JDBC"
+  ],
+
+  "cloud_and_devops": [
+    "AWS",
+    "Azure",
+    "Google Cloud",
+    "Docker",
+    "Kubernetes",
+    "Linux",
+    "Jenkins",
+    "GitHub Actions",
+    "Azure DevOps",
+    "CI/CD"
+  ],
+
+  "testing": [
+    "xUnit",
+    "NUnit",
+    "MSTest",
+    "JUnit",
+    "Mockito",
+    "Jest",
+    "Cypress",
+    "Selenium",
+    "Postman",
+    "Swagger"
+  ],
+
+  "architecture_and_design": [
+    "Clean Architecture",
+    "Layered Architecture",
+    "MVC",
+    "MVVM",
+    "Microservices Architecture",
+    "Monolithic Architecture",
+    "Domain Driven Design",
+    "SOLID Principles",
+    "Design Patterns"
+  ],
+
+  "tools_and_platforms": [
+    "Git",
+    "GitHub",
+    "GitLab",
+    "Bitbucket",
+    "Kafka",
+    "RabbitMQ",
+    "ElasticSearch",
+    "Visual Studio",
+    "VS Code",
+    "IntelliJ"
+  ]
+}
