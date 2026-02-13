@@ -1,0 +1,187 @@
+/* =========================================================
+   COMMON DASHBOARD CARD STYLES — Vertical Layout
+========================================================= */
+
+.common-card {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.75));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    min-height: 160px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.common-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Shimmer Layer */
+.common-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+    pointer-events: none;
+}
+
+.common-card:hover::before {
+    transform: translateX(100%);
+}
+
+/* Icon Container */
+.common-icon-container {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+/* Title */
+.common-card-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted, #64748B);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Value */
+.common-card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main, #1E293B);
+    line-height: 1;
+    margin-top: auto;
+}
+
+.common-card-subtext {
+    font-size: 0.875rem;
+    color: var(--text-light, #94A3B8);
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Footer */
+.common-card-footer {
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
+}
+
+.common-action-button {
+    background: none;
+    border: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+    margin-left: -0.5rem;
+}
+
+.common-action-button:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: translateX(2px);
+}
+
+.common-arrow-icon {
+    transition: transform 0.2s;
+    font-size: 0.8rem;
+}
+
+.common-action-button:hover .common-arrow-icon {
+    transform: translateX(4px);
+}
+
+/* ─── Theme Colors ─── */
+
+.common-icon-container.blue {
+    background: #E0E7FF;
+    color: #4F46E5;
+}
+
+.common-icon-container.green {
+    background: #D1FAE5;
+    color: #10B981;
+}
+
+.common-icon-container.purple {
+    background: #F3E8FF;
+    color: #8B5CF6;
+}
+
+.common-icon-container.orange {
+    background: #FFEDD5;
+    color: #F97316;
+}
+
+.common-icon-container.cyan {
+    background: #CFFAFE;
+    color: #06B6D4;
+}
+
+.common-icon-container.red {
+    background: #FEE2E2;
+    color: #EF4444;
+}
+
+.common-icon-container.gray {
+    background: #F1F5F9;
+    color: #64748B;
+}
+
+/* Theme Text Colors */
+.blue-text {
+    color: #4F46E5;
+}
+
+.green-text {
+    color: #10B981;
+}
+
+.purple-text {
+    color: #8B5CF6;
+}
+
+.orange-text {
+    color: #F97316;
+}
+
+.cyan-text {
+    color: #06B6D4;
+}
+
+.red-text {
+    color: #EF4444;
+}
+
+.gray-text {
+    color: #64748B;
+}

@@ -1,0 +1,36 @@
+/* =========================================================
+   ADMIN DASHBOARD STYLES (Glassmorphism)
+========================================================= */
+
+.admin-dashboard-container {
+    padding: 2.5rem 2rem;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    color: var(--text-main);
+    background-color: #f0f2f5;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
+    flex: 1;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .admin-dashboard-container {
+        padding: 1.5rem;
+    }
+
+    .admin-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

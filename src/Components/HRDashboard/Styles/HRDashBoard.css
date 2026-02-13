@@ -1,0 +1,243 @@
+/* =========================================================
+   GLASSMORPHISM HR DASHBOARD THEME
+========================================================= */
+
+:root {
+  --hr-bg-main: #f0f2f5;
+  --hr-primary: #4f46e5;
+  --hr-success: #10b981;
+  --hr-accent: #8b5cf6;
+  --hr-text-main: #1e293B;
+  --hr-text-muted: #64748B;
+  --hr-text-light: #94a3b8;
+
+  --hr-glass-bg: rgba(255, 255, 255, 0.75);
+  --hr-glass-border: rgba(255, 255, 255, 0.5);
+  --hr-glass-blur: 12px;
+
+  --hr-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --hr-shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --hr-shadow-glow: 0 0 30px rgba(79, 70, 229, 0.12);
+
+  --font-main: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+.hr-dashboard-wrapper {
+  min-height: 100vh;
+  padding: 2.5rem 2rem;
+  font-family: var(--font-main);
+  background-color: var(--hr-bg-main);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
+}
+
+.hr-content-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ================= DATE PILL ================= */
+.hr-date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  padding: 0.75rem 1.5rem;
+
+  background: var(--hr-glass-bg);
+  backdrop-filter: blur(var(--hr-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hr-glass-blur));
+  border: 1px solid white;
+  border-radius: 100px;
+  box-shadow: var(--hr-shadow-sm);
+
+  color: var(--hr-text-muted);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.hr-date-icon {
+  color: var(--hr-primary);
+}
+
+/* ================= GRID ================= */
+.hr-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* ================= CARD COMPONENT ================= */
+.hr-card {
+  background: var(--hr-glass-bg);
+  backdrop-filter: blur(var(--hr-glass-blur));
+  -webkit-backdrop-filter: blur(var(--hr-glass-blur));
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--hr-shadow-sm);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 220px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hr-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--hr-shadow-soft), var(--hr-shadow-glow);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Shimmer Effect */
+.hr-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+  pointer-events: none;
+}
+
+.hr-card:hover::before {
+  transform: translateX(100%);
+}
+
+.hr-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hr-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--hr-text-muted);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.hr-icon-container {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: var(--hr-shadow-sm);
+}
+
+/* Theme Variances */
+.hr-icon-container.blue {
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  color: var(--hr-primary);
+}
+
+.hr-icon-container.green {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: var(--hr-success);
+}
+
+.hr-icon-container.purple {
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+  color: var(--hr-accent);
+}
+
+.hr-card-content {
+  margin-bottom: 1.5rem;
+}
+
+.hr-card-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--hr-text-main);
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.hr-card-subtext {
+  font-size: 0.875rem;
+  color: var(--hr-text-light);
+  font-weight: 500;
+  margin: 0;
+}
+
+.hr-card-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(203, 213, 225, 0.3);
+}
+
+.hr-action-button {
+  background: none;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+  margin-left: -0.5rem;
+}
+
+.hr-action-button.blue-text {
+  color: var(--hr-primary);
+}
+
+.hr-action-button.green-text {
+  color: var(--hr-success);
+}
+
+.hr-action-button.purple-text {
+  color: var(--hr-accent);
+}
+
+.hr-action-button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: translateX(2px);
+}
+
+.hr-arrow-icon {
+  transition: transform 0.2s;
+}
+
+.hr-action-button:hover .hr-arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Text Value for non-numeric */
+.hr-text-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--hr-text-main);
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hr-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .hr-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

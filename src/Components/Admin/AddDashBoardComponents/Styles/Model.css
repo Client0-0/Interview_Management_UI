@@ -1,0 +1,284 @@
+/* ================= GLASSMORPHISM MODAL DESIGN ================= */
+
+/* Backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  /* Darker overlay for contrast */
+  backdrop-filter: blur(8px);
+  /* Strong blur behind modal */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Content */
+.modal {
+  background: rgba(255, 255, 255, 0.85);
+  /* Semi-transparent white */
+  backdrop-filter: blur(16px);
+  /* Glass effect itself */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal.large {
+  max-width: 800px;
+  /* Wider for Candidate form */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Header */
+.modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close:hover {
+  color: #ef4444;
+}
+
+/* Grid Layout */
+.modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Two columns by default */
+  gap: 20px;
+  padding: 1.5rem;
+}
+
+.modal-grid.two-col {
+  /* Inherits above */
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+  .modal-grid {
+    grid-template-columns: 1fr !important;
+    /* Force stack on mobile */
+  }
+}
+
+/* Form Elements */
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #334155;
+  position: relative;
+}
+
+.modal-grid input,
+.modal-grid select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-grid input:focus,
+.modal-grid select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+/* VALIDATION ERROR STYLES - Specificity Override */
+.modal-grid input.input-error,
+.modal-grid select.input-error {
+  border-color: #ef4444 !important;
+  background: #fef2f2 !important;
+  /* Light red tint */
+  box-shadow: 0 0 0 1px #ef4444 !important;
+}
+
+.error-text {
+  color: #ef4444 !important;
+  font-size: 0.75rem;
+  margin-top: 4px;
+  font-weight: 500;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-2px);
+  }
+
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+/* Full Width Fields */
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Footer / Actions */
+.modal-actions {
+  padding: 1.5rem;
+  background: rgba(248, 250, 252, 0.5);
+  /* Subtle footer background */
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+  color: white;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+}
+
+.btn:not(.primary) {
+  background: #ffffff;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.btn:not(.primary):hover {
+  background: #f1f5f9;
+}
+
+/* Tech Stack Specifics */
+.skill-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 4px;
+  list-style: none;
+  padding: 0;
+  border: 1px solid #e2e8f0;
+}
+
+.skill-suggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.skill-suggestions li:hover {
+  background: #f8fafc;
+  color: #4f46e5;
+}
+
+.selected-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.skill-chip {
+  background: #e0e7ff;
+  color: #4338ca;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skill-chip i {
+  cursor: pointer;
+  font-style: normal;
+  color: #4338ca;
+  opacity: 0.7;
+}
+
+.skill-chip i:hover {
+  opacity: 1;
+}

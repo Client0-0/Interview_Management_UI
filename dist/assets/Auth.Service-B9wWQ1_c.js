@@ -1,0 +1,1 @@
+import{g as e,x as t}from"./index-DuDVzYLA.js";const n=async t=>await e.post(`/Auth/token`,t),r=()=>{t()};export{r as n,n as t};

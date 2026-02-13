@@ -1,0 +1,301 @@
+/* =========================================================
+   GLASSMORPHISM TABLE & PAGE STYLES (Shared)
+========================================================= */
+
+/* --- Page Container --- */
+.page-container,
+.users-page,
+.panels-page,
+.candidates-page,
+.common-glass-page {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+/* --- Page Header --- */
+.page-header h2,
+.users-page h2,
+.panels-page h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-main, #1e293b);
+    margin-bottom: 0.5rem;
+}
+
+.page-header .muted,
+.users-page .muted,
+.panels-page .muted {
+    font-size: 0.95rem;
+    color: var(--text-muted, #64748b);
+    margin-bottom: 1.5rem;
+}
+
+/* --- Toolbar (Search & Actions) --- */
+.users-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.users-toolbar .input-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 0 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s;
+    flex: 1;
+    min-width: 250px;
+}
+
+.users-toolbar .input-box:focus-within {
+    border-color: var(--primary, #4f46e5);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.users-toolbar input {
+    border: none;
+    background: transparent;
+    padding: 0.75rem 0.5rem;
+    width: 100%;
+    font-size: 0.95rem;
+    outline: none;
+    color: var(--text-main);
+}
+
+.users-toolbar .input-icon {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.right-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.users-toolbar select {
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.users-toolbar select:hover {
+    border-color: var(--primary);
+}
+
+/* --- Table Styles --- */
+.table-container {
+    overflow-x: auto;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+}
+
+.data-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    color: var(--text-body, #334155);
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.font-medium {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* --- Badges & Status --- */
+.badge,
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.02em;
+}
+
+.badge.active,
+.status-pill.active,
+.badge.success {
+    background: rgba(16, 185, 129, 0.15);
+    color: #059669;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badge.inactive,
+.status-pill.inactive,
+.badge.danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.badge.warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: #d97706;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.badge.info {
+    background: rgba(59, 130, 246, 0.15);
+    color: #2563eb;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.badge.neutral {
+    background: rgba(148, 163, 184, 0.15);
+    color: #64748b;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+/* --- Menu / Actions --- */
+.actions-cell {
+    width: 60px;
+    text-align: center;
+}
+
+.menu-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.4rem;
+    border-radius: 50%;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-main);
+}
+
+.menu-dropdown {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-10px);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    min-width: 160px;
+    padding: 0.5rem;
+    z-index: 50;
+    overflow: hidden;
+    animation: fadeIn 0.15s ease-out;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--text-body);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.menu-item:hover {
+    background: rgba(241, 245, 249, 0.8);
+}
+
+.menu-item i {
+    width: 18px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.menu-item.view-btn:hover {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.menu-item.edit-btn:hover {
+    color: #d97706;
+    background: rgba(217, 119, 6, 0.1);
+}
+
+.menu-item.deactivate-btn:hover {
+    color: #dc2626;
+    background: rgba(220, 38, 38, 0.1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(-10px);
+    }
+}
