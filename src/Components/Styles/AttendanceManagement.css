@@ -1,240 +1,562 @@
-/* OUTER CONTAINER */
+/* =========================================================
+   ATTENDANCE MANAGEMENT — PREMIUM UI (3-COLUMN GRID)
+   Uses the Mentor Dashboard design system (--mentor-*)
+========================================================= */
+
+/* ================= PAGE WRAPPER ================= */
+.attendance-page {
+    min-height: 100vh;
+    background: var(--mentor-bg, #F8FAFC);
+    padding: 2rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--mentor-text-main, #1E293B);
+}
+
+.attendance-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ================= PAGE HEADER ================= */
+.attendance-page-header {
+    margin-bottom: 1.75rem;
+}
+
+.attendance-page-header h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0 0 0.25rem 0;
+    color: var(--mentor-text-main, #1E293B);
+}
+
+.attendance-page-header p {
+    color: var(--mentor-text-sub, #64748B);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* ================= STATS STRIP ================= */
+.attendance-stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.att-stat-card {
+    background: var(--mentor-surface, #FFFFFF);
+    border: 1px solid var(--mentor-border, #E2E8F0);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06);
+    transition: all 0.25s ease;
+}
+
+.att-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px rgb(0 0 0 / 0.1);
+}
+
+.att-stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.att-stat-icon.total {
+    background: #EEF2FF;
+    color: #4F46E5;
+}
+
+.att-stat-icon.present {
+    background: #ECFDF5;
+    color: #059669;
+}
+
+.att-stat-icon.absent {
+    background: #FEF2F2;
+    color: #DC2626;
+}
+
+.att-stat-icon.pending {
+    background: #FFFBEB;
+    color: #D97706;
+}
+
+.att-stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.att-stat-label {
+    font-size: 0.75rem;
+    color: var(--mentor-text-sub, #64748B);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.att-stat-value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* ================= SEARCH & FILTER BAR ================= */
 .search-filter-row {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  margin-bottom: 20px;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1.75rem;
 }
 
 .search-input {
-  width: 85%;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--mentor-border, #E2E8F0);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    background: var(--mentor-surface, #FFFFFF);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input::placeholder {
+    color: var(--mentor-text-sub, #64748B);
+}
+
+.search-input:focus {
+    border-color: var(--mentor-primary, #4F46E5);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
 }
 
 .filter-wrapper {
-  position: relative;
-}
-
-.drive-dropdown {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  z-index: 10;
-}
-
-.drive-item {
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.drive-item:hover {
-  background-color: #f0f0f0;
-}
-
-.drive-header-title {
-  margin: 24px 0 12px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-
-.attendanceParagraph {
-  width: 95%;
-  max-width: 1600px;
-  border: 1px solid #ddd;
-  padding: 30px;
-  border-radius: 12px;
-  background: #f7f7f7;
-  margin-left: 0;
-}
-.drive-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
+    position: relative;
 }
 
 .filter-btn {
-  padding: 6px 12px;
-  cursor: pointer;
+    padding: 0.7rem 1.15rem;
+    border: 1px solid var(--mentor-border, #E2E8F0);
+    border-radius: 10px;
+    background: var(--mentor-surface, #FFFFFF);
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--mentor-text-main, #1E293B);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.filter-btn:hover {
+    border-color: var(--mentor-primary, #4F46E5);
+    color: var(--mentor-primary, #4F46E5);
 }
 
 .drive-dropdown {
-  position: absolute;
-  background: #fff;
-  border: 1px solid #ddd;
-  margin-top: 6px;
-  z-index: 10;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 220px;
+    background: var(--mentor-surface, #FFFFFF);
+    border: 1px solid var(--mentor-border, #E2E8F0);
+    border-radius: 10px;
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.12);
+    z-index: 20;
+    overflow: hidden;
+    animation: dropdown-enter 0.15s ease-out;
+}
+
+@keyframes dropdown-enter {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .drive-item {
-  padding: 8px 12px;
-  cursor: pointer;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.15s;
 }
 
 .drive-item:hover {
-  background: #f2f2f2;
+    background: var(--mentor-bg, #F8FAFC);
+    color: var(--mentor-primary, #4F46E5);
 }
 
-/* LIST WRAPPER */
-.attendance-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+.drive-item+.drive-item {
+    border-top: 1px solid var(--mentor-border, #E2E8F0);
 }
 
-/* -----------------------------------
-   CANDIDATE CARD — HORIZONTAL EXPANDED
------------------------------------ */
+/* ================= DRIVE SECTION ================= */
+.drive-section {
+    margin-bottom: 2rem;
+}
+
+.drive-header-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--mentor-text-main, #1E293B);
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.drive-header-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 22px;
+    border-radius: 4px;
+    background: var(--mentor-primary, #4F46E5);
+    flex-shrink: 0;
+}
+
+.drive-date-badge {
+    font-size: 0.8rem;
+    color: var(--mentor-text-sub, #64748B);
+    font-weight: 400;
+    margin-left: 0.25rem;
+}
+
+/* ================= DYNAMIC GRID ================= */
+.candidates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+}
+
+/* ================= CANDIDATE CARD (compact vertical) ================= */
 .candidate-card {
-  width: 90%;
-  max-width: 1550px;
-  border: 1px solid #cfcfcf;
-  padding: 36px 40px;
-  border-radius: 14px;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  min-height: 240px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  margin-top: 15px;
+    background: var(--mentor-surface, #FFFFFF);
+    border: 1px solid var(--mentor-border, #E2E8F0);
+    border-radius: 14px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06);
+    transition: all 0.25s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-/* TOP SECTION */
-.top-section {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
+.candidate-card:hover {
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1);
+    border-color: #CBD5E1;
 }
 
-/* LEFT SIDE */
-.candidate-left {
-  flex: 1.4;
+.card-accent-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--mentor-primary, #4F46E5), #818CF8);
+    flex-shrink: 0;
 }
 
-.candidate-left h3 {
-  margin: 0;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.card-body {
+    padding: 1rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
 }
 
-.candidate-left p {
-  font-size: 17px;
-  margin: 6px 0;
+/* Card Header — avatar + name row */
+.card-header-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
 }
 
-/* ROUND TAG */
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+    color: var(--mentor-primary, #4F46E5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.candidate-name-block {
+    min-width: 0;
+}
+
+.candidate-name-block h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Round badge */
 .round {
-  background-color: #e0e7ff;
-  color: #3730a3;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 13px;
+    display: inline-block;
+    font-size: 0.65rem;
+    background: #EEF2FF;
+    color: var(--mentor-primary, #4F46E5);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border: 1px solid #E0E7FF;
+    margin-top: 2px;
 }
 
-/* RIGHT SIDE PANEL CARD */
-.panel-right {
-  flex: 1;
-  background-color: oklch(0.97 0.03 265);
-  padding: 22px 20px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  font-size: 15px;
+/* Contact info */
+.card-contact p {
+    font-size: 0.8rem;
+    color: var(--mentor-text-sub, #64748B);
+    margin: 0.15rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-contact p i {
+    width: 13px;
+    text-align: center;
+    font-size: 0.72rem;
+    flex-shrink: 0;
+}
+
+/* Panel info */
+.card-panel-info {
+    background: var(--mentor-bg, #F8FAFC);
+    padding: 0.65rem 0.85rem;
+    border-radius: 8px;
+    border: 1px solid var(--mentor-border, #E2E8F0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.card-panel-info p {
+    font-size: 0.8rem;
+    margin: 0;
+    color: var(--mentor-text-sub, #64748B);
+}
+
+.card-panel-info b {
+    color: var(--mentor-text-main, #1E293B);
 }
 
 .reassign-btn-right {
-  background-color: #f8dbf0;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--mentor-surface, #FFFFFF);
+    border: 1px solid var(--mentor-border, #E2E8F0);
+    padding: 0.4rem 0.75rem;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--mentor-text-main, #1E293B);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
-/* ATTENDANCE ROW */
+.reassign-btn-right:hover {
+    border-color: var(--mentor-primary, #4F46E5);
+    color: var(--mentor-primary, #4F46E5);
+    background: #EEF2FF;
+}
+
+/* ================= ATTENDANCE ROW ================= */
 .attendance-row {
-  width: 100%;
-  border-top: 1px solid #ddd;
-  padding-top: 22px;
+    border-top: 1px solid var(--mentor-border, #E2E8F0);
+    padding-top: 0.75rem;
+    margin-top: auto;
 }
 
-/* BUTTONS ROW */
 .attendance-buttons {
-  display: flex;
-  gap: 18px;
-  width: 100%;
+    display: flex;
+    gap: 0.5rem;
 }
 
 .present-btn,
 .absent-btn {
-  flex: 1;
-  padding: 10px 24px;
-  border-radius: 10px;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-weight: 100;
-  font-size: 18px;
+    flex: 1;
+    padding: 0.55rem 0.5rem;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
 }
 
-/* UPDATED COLORS */
 .present-btn {
-  background-color: #0aad36;  /* light green */
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    box-shadow: 0 2px 8px -2px rgba(16, 185, 129, 0.4);
+}
+
+.present-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px -2px rgba(16, 185, 129, 0.5);
 }
 
 .absent-btn {
-  background-color: #f93838;  /* light orange */
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    box-shadow: 0 2px 8px -2px rgba(239, 68, 68, 0.4);
 }
 
-/* MARKED ATTENDANCE BLOCK */
+.absent-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px -2px rgba(239, 68, 68, 0.5);
+}
+
+/* Marked attendance */
 .marked-attendance {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: oklch(93.383% 0.00301 264.781);
-  padding: 18px 20px;
-  border-radius: 10px;
-  font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+.marked-attendance.status-present {
+    background: #ECFDF5;
+    border: 1px solid #A7F3D0;
+    color: #065F46;
+}
+
+.marked-attendance.status-absent {
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    color: #991B1B;
+}
+
+.marked-attendance b {
+    font-weight: 700;
 }
 
 .change-btn {
-  background-color: #3b82f6;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
+    background: transparent;
+    border: 1px solid currentColor;
+    padding: 0.3rem 0.65rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: inherit;
+    transition: all 0.2s ease;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .candidate-card {
-    max-width: 100%;
-    padding: 26px;
-  }
-  .top-section {
-    flex-direction: column;
-  }
+.change-btn:hover {
+    background: rgba(0, 0, 0, 0.06);
 }
 
-@media (max-width: 600px) {
-  .candidate-card {
-    padding: 22px;
-    min-height: 180px;
-  }
-  .attendance-buttons {
+/* ================= EMPTY STATE ================= */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--mentor-text-sub, #64748B);
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.4;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* ================= LOADING ================= */
+.attendance-loading {
+    display: flex;
     flex-direction: column;
-  }
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+    gap: 1rem;
+    color: var(--mentor-text-sub, #64748B);
+}
+
+.spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid var(--mentor-border, #E2E8F0);
+    border-top-color: var(--mentor-primary, #4F46E5);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+    .attendance-page {
+        padding: 1.25rem;
+    }
+
+    .attendance-stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+    .attendance-stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .attendance-buttons {
+        flex-direction: column;
+    }
+
+    .search-filter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card-panel-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

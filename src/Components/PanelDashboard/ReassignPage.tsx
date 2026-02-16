@@ -5,6 +5,7 @@ import type { Candidate } from "../../Models/Candidate";
 import type { reassignpanel } from "../../Models/ReassignPanel";
 import type { User } from "../../Models/user";
 import * as ReassignService from "../../Services/ReassignService";
+import { notifySuccess, notifyError } from "../../Utils/toastHelper";
 import "../Styles/ReassignPage.css";
 
 interface LocationState {
@@ -77,8 +78,14 @@ const ReassignPage: React.FC = () => {
   /* ================= CONFIRM REASSIGN ================= */
 
   const handleConfirm = async () => {
-    if (!reason) return alert("Please select a reason!");
-    if (!selectedPanel) return alert("Please select a new panel!");
+    if (!reason) {
+      notifyError("Please select a reason for reassignment.");
+      return;
+    }
+    if (!selectedPanel) {
+      notifyError("Please select a new panel member.");
+      return;
+    }
 
     const payload: reassignpanel = {
       candidateId: numericCandidateId,
@@ -92,14 +99,14 @@ const ReassignPage: React.FC = () => {
         await ReassignService.ReassignService.postReassign(payload);
 
       if (response.ok) {
-        alert("Reassignment Successful!");
-        navigate(-1);
+        notifySuccess("Panel reassigned successfully!");
+        setTimeout(() => navigate(-1), 1200);
       } else {
-        alert("Reassignment Failed!");
+        notifyError("Reassignment failed. Please try again.");
       }
     } catch (error) {
       console.error(error);
-      alert("Something went wrong!");
+      notifyError("Something went wrong. Please try again later.");
     }
   };
 
@@ -112,7 +119,7 @@ const ReassignPage: React.FC = () => {
 
   return (
     <div className="reassign-wrapper">
-     
+
 
       <div className="reassign-card">
         {/* Candidate Information */}
@@ -193,10 +200,9 @@ const ReassignPage: React.FC = () => {
                 <div
                   key={panel.userId}
                   className={`panel-card 
-                    ${
-                      selectedPanel === String(panel.userId)
-                        ? "selected"
-                        : ""
+                    ${selectedPanel === String(panel.userId)
+                      ? "selected"
+                      : ""
                     }
                     ${isCurrent ? "disabled" : ""}
                   `}
