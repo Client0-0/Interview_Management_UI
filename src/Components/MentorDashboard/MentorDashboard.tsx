@@ -239,6 +239,13 @@ const MentorDashboard: React.FC = () => {
                 ))}
               </select>
             </div>
+
+            <button
+              className="availability-btn"
+              onClick={() => navigate("availability")}
+            >
+              <i className="fa-regular fa-calendar-check" /> Set Availability
+            </button>
           </div>
         </section>
 

@@ -27,6 +27,7 @@ import CandidateView from "../Components/Admin/View/CandidateView";
 import CandidateEditRoute from "../Components/Admin/Edit/CandidateEditRoute";
 import AddCandidate from "../Components/Admin/AddDashBoardComponents/AddCandidate";
 import AttendanceManagement from "../Components/MentorDashboard/AttendanceManagement";
+import Availability from "../Components/MentorDashboard/Availability";
 import ReassignPage from "../Components/PanelDashboard/ReassignPage";
 //import ReassignPage from "../Components/PanelDashboard/ReassignPage";
 
@@ -91,26 +92,26 @@ export const router = createBrowserRouter([
             element: <Users />,          // 👈 parent
             children: [
               { path: "adduser", element: <AddUserModal /> }, // 👈 modal route
-              {path:"viewuser",element: <UserView />},
-              {path:"edituser/:userId", element:<EditUserRoute/>},
+              { path: "viewuser", element: <UserView /> },
+              { path: "edituser/:userId", element: <EditUserRoute /> },
               {
                 path: "deactivateuser/:userId",
                 element: <DeactivateUserRoute />,
               }
             ],
           },
-          
-          { 
-            path: "candidates", 
+
+          {
+            path: "candidates",
             element: <Candidates />,
-            children:[
-              {path:"addcandidate",element:<AddCandidateModal />},
+            children: [
+              { path: "addcandidate", element: <AddCandidateModal /> },
               { path: "viewcandidate", element: <CandidateView /> },
               { path: "editcandidate/:candidateId", element: <CandidateEditRoute /> }
-            ],          
+            ],
           },
-          { 
-            path: "panels", 
+          {
+            path: "panels",
             element: <Panels />,
             children: [
               { path: "addpanel", element: <AddPanelModal /> },
@@ -119,26 +120,26 @@ export const router = createBrowserRouter([
               { path: "deactivateuser/:userId", element: <DeactivateUserRoute /> }
             ],
           },
-          { 
-            path: "mentors", 
+          {
+            path: "mentors",
             element: <Mentors />,
             children: [
               { path: "addmentor", element: <AddMentorModal /> }, // 👈 modal route
-              {path:"viewuser",element: <UserView />},
-              {path:"edituser/:userId", element:<EditUserRoute/>},
+              { path: "viewuser", element: <UserView /> },
+              { path: "edituser/:userId", element: <EditUserRoute /> },
               {
                 path: "deactivateuser/:userId",
                 element: <DeactivateUserRoute />,
               }
             ],
           },
-          { 
-            path: "hr", 
+          {
+            path: "hr",
             element: <HR />,
-             children: [
+            children: [
               { path: "addhr", element: <AddHRModal /> }, // 👈 modal route
-              {path:"viewuser",element: <UserView />},
-              {path:"edituser/:userId", element:<EditUserRoute/>},
+              { path: "viewuser", element: <UserView /> },
+              { path: "edituser/:userId", element: <EditUserRoute /> },
               {
                 path: "deactivateuser/:userId",
                 element: <DeactivateUserRoute />,
@@ -150,123 +151,63 @@ export const router = createBrowserRouter([
             path: "drives",
             element: <Drives />,
             children: [
-                {
-                  path: "createdrive",
-                  element: <DriveWizard onClose={() => window.history.back()} />,
-                } ,  
-                
-                { 
-                path: "view/:id", 
-                element: <DriveView mode="view"/> ,
+              {
+                path: "createdrive",
+                element: <DriveWizard onClose={() => window.history.back()} />,
+              },
+
+              {
+                path: "view/:id",
+                element: <DriveView mode="view" />,
                 children: [
                   { index: true, element: <DriveInfo /> }, // default
-                  {path:"addcandidate",element:<AddCandidate />},
+                  { path: "addcandidate", element: <AddCandidate /> },
                   { path: "driveinfo", element: <DriveInfo /> },
-                  { 
-                    path: "members", 
-                    element: <DriveMembers />, 
+                  {
+                    path: "members",
+                    element: <DriveMembers />,
                     children: [
                       { index: true, element: <Navigate to="drivehr" replace /> },
-                      { 
-                        path: "drivehr", 
-                        element: <DriveHR /> ,
+                      {
+                        path: "drivehr",
+                        element: <DriveHR />,
                         children: [
-                          
+
                           {
                             path: "view/:userId",   // 👈 modal route
                             element: <DriveViewMember />,
                           },
                         ],
                       },
-                      { 
-                        path: "drivementor", 
+                      {
+                        path: "drivementor",
                         element: <DriveMentor />,
-                         children: [
-                          
+                        children: [
+
                           {
                             path: "view/:userId",   // 👈 modal route
                             element: <DriveViewMember />,
                           },
-                        ], 
+                        ],
                       },
-                      { 
-                        path: "drivepanel", 
+                      {
+                        path: "drivepanel",
                         element: <DrivePanel />,
                         children: [
-                          
+
                           {
                             path: "view/:userId",   // 👈 modal route
                             element: <DriveViewMember />,
                           },
                         ],
-                       },
+                      },
                     ],
                   },
 
-                  { path: "config", element: <DriveConfig/> },
-                  { 
-                    path: "candidates", 
-                    element: <DriveCandidates />,
-                    children: [
-                    {
-                      path: "viewcandidate/:candidateId",
-                      element: <DriveViewCandidate />,
-                    },
-                  ],
-                  },
-                  
-                ],
-              },
-              {
-                path:"edit/:id",
-                element:<DriveView mode="edit" />,
-                children: [
-                  { index: true, element: <DriveInfo /> }, // default
-                  { path: "driveinfo", element: <DriveInfo /> },
-                  { 
-                    path: "members", 
-                    element: <DriveMembers />, 
-                    children: [
-                      { index: true, element: <Navigate to="drivehr" replace /> },
-                      { 
-                        path: "drivehr", 
-                        element: <DriveHR /> ,
-                        children: [
-                          
-                          {
-                            path: "view/:userId",   // 👈 modal route
-                            element: <DriveViewMember />,
-                          },
-                        ],
-                      },
-                      { 
-                        path: "drivementor", 
-                        element: <DriveMentor />,
-                         children: [
-                          
-                          {
-                            path: "view/:userId",   // 👈 modal route
-                            element: <DriveViewMember />,
-                          },
-                        ],
-                      },
-                      { 
-                        path: "drivepanel", 
-                        element: <DrivePanel />,
-                         children: [
-                          
-                          {
-                            path: "view/:userId",   // 👈 modal route
-                            element: <DriveViewMember />,
-                          },
-                        ],
-                       },
-                    ],
-                  },
                   { path: "config", element: <DriveConfig /> },
-                  { 
-                    path: "candidates", 
-                    element: <DriveCandidates/>,
+                  {
+                    path: "candidates",
+                    element: <DriveCandidates />,
                     children: [
                       {
                         path: "viewcandidate/:candidateId",
@@ -274,13 +215,73 @@ export const router = createBrowserRouter([
                       },
                     ],
                   },
-                  
+
+                ],
+              },
+              {
+                path: "edit/:id",
+                element: <DriveView mode="edit" />,
+                children: [
+                  { index: true, element: <DriveInfo /> }, // default
+                  { path: "driveinfo", element: <DriveInfo /> },
+                  {
+                    path: "members",
+                    element: <DriveMembers />,
+                    children: [
+                      { index: true, element: <Navigate to="drivehr" replace /> },
+                      {
+                        path: "drivehr",
+                        element: <DriveHR />,
+                        children: [
+
+                          {
+                            path: "view/:userId",   // 👈 modal route
+                            element: <DriveViewMember />,
+                          },
+                        ],
+                      },
+                      {
+                        path: "drivementor",
+                        element: <DriveMentor />,
+                        children: [
+
+                          {
+                            path: "view/:userId",   // 👈 modal route
+                            element: <DriveViewMember />,
+                          },
+                        ],
+                      },
+                      {
+                        path: "drivepanel",
+                        element: <DrivePanel />,
+                        children: [
+
+                          {
+                            path: "view/:userId",   // 👈 modal route
+                            element: <DriveViewMember />,
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  { path: "config", element: <DriveConfig /> },
+                  {
+                    path: "candidates",
+                    element: <DriveCandidates />,
+                    children: [
+                      {
+                        path: "viewcandidate/:candidateId",
+                        element: <DriveViewCandidate />,
+                      },
+                    ],
+                  },
+
                 ],
               },
               { path: "viewuser", element: <UserView /> },
             ],
-          
-           },
+
+          },
         ],
       },
     ],
@@ -295,7 +296,7 @@ export const router = createBrowserRouter([
         element: <HRLayout />,
         children: [
           { index: true, element: <HRDashboard /> },
-          {path:"candidatemanagement",element:<CandidateDetails />}
+          { path: "candidatemanagement", element: <CandidateDetails /> }
         ],
       },
     ],
@@ -314,10 +315,13 @@ export const router = createBrowserRouter([
           {
             path: "attendance",
             element: <AttendanceManagement />,
-            
           },
           {
-          path: "reassignpanel/:candidateId",
+            path: "availability",
+            element: <Availability />,
+          },
+          {
+            path: "reassignpanel/:candidateId",
             element: <ReassignPage />,
           },
           {
