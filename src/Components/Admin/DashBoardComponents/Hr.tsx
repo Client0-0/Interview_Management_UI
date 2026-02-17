@@ -116,6 +116,7 @@ const HR: React.FC = () => {
           </select>
 
           <button className="btn primary" onClick={() => navigate("addhr")}>
+            <i className="fa-solid fa-plus"></i>
             Add HR
           </button>
         </div>

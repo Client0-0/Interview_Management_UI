@@ -102,6 +102,7 @@ const Panels: React.FC = () => {
             className="btn primary"
             onClick={() => navigate("addpanel")}
           >
+            <i className="fa-solid fa-plus"></i>
             Add Panel Member
           </button>
         </div>

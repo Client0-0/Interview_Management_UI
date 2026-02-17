@@ -276,14 +276,14 @@ const Drives: React.FC = () => {
                     {openMenu === i && (
                       <div className="menu-dropdown">
                         <button
-                          className="menu-item"
+                          className="menu-item add-btn"
                           onClick={() => navigate(`view/${d.driveId}/addcandidate`)}
                         >
                           <i className="fa-solid fa-user-plus text-muted"></i>
                           <span>Add Candidate</span>
                         </button>
                         <button
-                          className="menu-item"
+                          className="menu-item view-btn"
                           onClick={() => navigate(`view/${d.driveId}`)}
                         >
                           <i className="fa-solid fa-eye text-muted"></i>
@@ -291,7 +291,7 @@ const Drives: React.FC = () => {
                         </button>
 
                         <button
-                          className="menu-item"
+                          className="menu-item edit-btn"
                           onClick={() => navigate(`edit/${d.driveId}`)}
                         >
                           <i className="fa-solid fa-pen text-muted"></i>

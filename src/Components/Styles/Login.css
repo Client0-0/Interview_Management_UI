@@ -63,26 +63,28 @@
 }
 
 /* Headings */
-.title {
+.login-card .title {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-main);
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
-.subtitle {
+.login-card .subtitle {
   font-size: 0.875rem;
   color: var(--text-muted);
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 /* Forms */
-.form-group {
+.login-card .form-group {
   text-align: left;
   margin-bottom: 1.25rem;
 }
 
-.form-group label {
+.login-card .form-group label {
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--text-body);
@@ -114,6 +116,7 @@
   font-size: 0.95rem;
   transition: var(--transition);
   background-color: var(--surface-alt);
+  text-align: left;
 }
 
 .login-card .input-box input:focus {

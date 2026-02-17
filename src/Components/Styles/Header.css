@@ -2,14 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 25px;
-  padding: 15px;
-  
- z-index: 1000  ;
+  padding: 15px 2rem;
+  z-index: 1000;
   position: sticky;
   top: 0;
-  background-color: #F3F4F6;
-  border-bottom: 2px solid #bdbaba;
+  background-color: var(--bg, #F8FAFC);
+  border-bottom: 1px solid var(--border, #E2E8F0);
+  width: 100%;
 }
 
 .nav-left h2 {
@@ -63,7 +62,7 @@
   background: white;
   width: 180px;
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   padding: 8px 0;
   z-index: 999;
   animation: fadeIn 0.2s ease-in-out;
@@ -88,8 +87,15 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 768px) {
@@ -102,7 +108,8 @@
   .profile-icon i {
     font-size: 26px;
   }
-   .navbar {
+
+  .navbar {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;

@@ -597,18 +597,26 @@ label {
 }
 
 .users-toolbar select {
-  padding: 0.6rem 1rem;
+  padding: 0.625rem 1rem;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: #fff;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   cursor: pointer;
   outline: none;
   transition: all 0.2s;
+  height: 40px;
 }
 
 .users-toolbar select:hover {
   border-color: var(--primary);
+}
+
+/* Ensure Add buttons match the select height */
+.right-actions .btn {
+  height: 40px;
+  padding: 0 1rem;
+  font-size: 0.875rem;
 }
 
 /* --- Table Styles --- */

@@ -127,6 +127,7 @@ const Mentor: React.FC = () => {
 
           <button className="btn primary"
             onClick={() => navigate("addmentor")}>
+            <i className="fa-solid fa-plus"></i>
             Add Mentor
           </button>
         </div>

@@ -70,7 +70,7 @@
 
 .table-wrapper {
   margin-top: 18px;
- 
+
   overflow: visible;
 }
 
@@ -243,14 +243,31 @@
   align-items: center;
 }
 
-.menu-item .edit{
+.menu-item .edit {
   color: #007bff;
 }
-.menu-item .add{
+
+.menu-item .add {
   color: #047857;
 }
+
 .menu-item:hover {
   background: #f4f4f4;
+}
+
+.menu-item.add-btn:hover {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+.menu-item.view-btn:hover {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+.menu-item.edit-btn:hover {
+  background: rgba(217, 119, 6, 0.1);
+  color: #d97706;
 }
 
 
