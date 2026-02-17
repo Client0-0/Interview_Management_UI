@@ -44,7 +44,7 @@ const Drives: React.FC = () => {
   const [drives, setDrives] = useState<Drive[]>([]);
   /* Pagination */
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(3);
+  const [pageSize] = useState(3);
 
   /* Menu state */
   const [openMenu, setOpenMenu] = useState<number | null>(null);

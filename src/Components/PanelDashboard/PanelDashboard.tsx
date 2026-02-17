@@ -110,7 +110,7 @@ const PanelDashboard: React.FC = () => {
         <section className="panel-quick-actions-section">
           <h3 className="panel-section-title">Quick Actions</h3>
           <div className="panel-actions-grid">
-            <button className="panel-card panel-action-card" onClick={() => navigate("/interviewfeedback")}>
+            <button className="panel-card panel-action-card" onClick={() => navigate("/panel/interviewfeedback")}>
               <div className="panel-action-icon-wrapper">
                 <FaCommentDots />
               </div>
@@ -121,7 +121,7 @@ const PanelDashboard: React.FC = () => {
               <i className="fa-solid fa-chevron-right panel-arrow-icon"></i>
             </button>
 
-            <button className="panel-card panel-action-card" onClick={() => navigate("/setavailabilty")}>
+            <button className="panel-card panel-action-card" onClick={() => navigate("/panel/setavailability")}>
               <div className="panel-action-icon-wrapper">
                 <FaCalendarCheck />
               </div>
@@ -199,13 +199,13 @@ const PanelDashboard: React.FC = () => {
                   <div className="panel-card-actions">
                     <button
                       className="panel-btn-primary"
-                      onClick={() => navigate(`/details/${c.candidateId}`)}
+                      onClick={() => navigate(`/panel/details/${c.candidateId}`)}
                     >
                       View Details
                     </button>
                     <button
                       className="panel-btn-outline"
-                      onClick={() => navigate(`/reassign/${c.candidateId}`)}
+                      onClick={() => navigate(`/panel/reassign/${c.candidateId}`)}
                     >
                       Reassign
                     </button>

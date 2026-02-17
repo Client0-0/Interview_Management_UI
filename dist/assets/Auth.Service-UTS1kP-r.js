@@ -1,0 +1,1 @@
+import{D as e,M as t}from"./index-z4XAkqZ6.js";const n=async t=>await e.post(`/Auth/token`,t),r=()=>{t()};export{r as n,n as t};

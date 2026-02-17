@@ -1,126 +1,132 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../Styles/SetAvailability.css";
-import Header from "../Header/Header";
+// import { setAvailabilityForUser } from "../../Services/User.Service";
 
-interface SlotSelection {
-  morning: boolean;
-  afternoon: boolean;
-  evening: boolean;
-}
-
-interface DayAvailability {
+interface DayItem {
+  iso: string;
   dayName: string;
-  date: string;
-  slots: SlotSelection;
-  checked: boolean;
+  formattedDate: string;
 }
 
 const SetAvailability: React.FC = () => {
-  // ❇️ Generate next week only once using useMemo (NO WARNINGS)
-  const nextWeekData: DayAvailability[] = useMemo(() => {
-    const today = new Date();
-    const nextWeekStart = new Date();
+  const navigate = useNavigate();
+  const [selectedDates, setSelectedDates] = useState<string[]>([]);
 
-    // Move to next Monday
-    nextWeekStart.setDate(today.getDate() + (8 - today.getDay()));
-
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-    const generated: DayAvailability[] = [];
-
-    for (let i = 0; i < 7; i++) {
-      const temp = new Date(nextWeekStart);
-      temp.setDate(nextWeekStart.getDate() + i);
-
-      generated.push({
-        dayName: days[temp.getDay()],
-        date: temp.toDateString().slice(4, 10),
-        checked: false,
-        slots: {
-          morning: false,
-          afternoon: false,
-          evening: false,
-        },
-      });
-    }
-
-    return generated;
-  }, []);
-
-  const [weekData, setWeekData] = useState<DayAvailability[]>(nextWeekData);
-
-  // Toggle main day checkbox
-  const toggleDay = (index: number) => {
-    const updated = [...weekData];
-    updated[index].checked = !updated[index].checked;
-
-    if (!updated[index].checked) {
-      updated[index].slots = {
-        morning: false,
-        afternoon: false,
-        evening: false,
-      };
-    }
-
-    setWeekData(updated);
+  const closeOverlay = () => {
+    navigate(-1);
   };
 
-  // Toggle slot (morning/afternoon/evening)
-  const toggleSlot = (index: number, slot: keyof SlotSelection) => {
-    const updated = [...weekData];
-    updated[index].slots[slot] = !updated[index].slots[slot];
-    setWeekData(updated);
+  const getNextMonday = (): Date => {
+    const today = new Date();
+    const day = today.getDay();
+    const daysUntilNextMonday = day === 1 ? 7 : (8 - day) % 7;
+    const nextMonday = new Date(today);
+    nextMonday.setDate(today.getDate() + daysUntilNextMonday);
+    return nextMonday;
+  };
+
+  const weekDays: DayItem[] = useMemo(() => {
+    const start = getNextMonday();
+
+    return Array.from({ length: 7 }).map((_, index) => {
+      const current = new Date(start);
+      current.setDate(start.getDate() + index);
+
+      return {
+        iso: current.toISOString(),
+        dayName: current.toLocaleDateString("en-US", {
+          weekday: "long",
+        }),
+        formattedDate: current.toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        }),
+      };
+    });
+  }, []);
+
+  const toggleDate = (iso: string) => {
+    setSelectedDates((prev) =>
+      prev.includes(iso)
+        ? prev.filter((d) => d !== iso)
+        : [...prev, iso]
+    );
+  };
+
+  const handleSave = async () => {
+    // 🔇 Backend call commented out — uncomment when service is ready
+    // try {
+    //   const userId = Number(localStorage.getItem("userId"));
+    //   if (!userId) { alert("User not found"); return; }
+    //   await setAvailabilityForUser({ userId, dates: selectedDates });
+    //   alert("Availability saved successfully");
+    //   closeOverlay();
+    // } catch (error) {
+    //   console.error(error);
+    //   alert("Something went wrong");
+    // }
+
+    /* 🟢 MOCK: just close overlay */
+    console.log("Selected dates:", selectedDates);
+    closeOverlay();
   };
 
   return (
-    <div className="availability-container">
-      <Header />
-
-      <div className="availability-box">
-        <h3 className="section-title">📅 Next Week Availability</h3>
-        <p className="section-subtitle">
-          Select the days and time slots when you’re available for interviews next week.
-        </p>
-
-        {weekData.map((day, index) => (
-          <div className="day-block" key={index}>
-            <div className="day-header">
-              <input
-                type="checkbox"
-                checked={day.checked}
-                onChange={() => toggleDay(index)}
-              />
-              <label>
-                {day.dayName} ({day.date})
-              </label>
-            </div>
-
-            {day.checked && (
-              <div className="slot-container">
-                <div
-                  className={`slot-box ${day.slots.morning ? "active" : ""}`}
-                  onClick={() => toggleSlot(index, "morning")}
-                >
-                  Morning (9:00 AM - 12:00 PM)
-                </div>
-
-                <div
-                  className={`slot-box ${day.slots.afternoon ? "active" : ""}`}
-                  onClick={() => toggleSlot(index, "afternoon")}
-                >
-                  Afternoon (1:00 PM - 4:00 PM)
-                </div>
-
-                <div
-                  className={`slot-box ${day.slots.evening ? "active" : ""}`}
-                  onClick={() => toggleSlot(index, "evening")}
-                >
-                  Evening (4:00 PM - 7:00 PM)
-                </div>
-              </div>
-            )}
+    <div className="avail-overlay-backdrop" onClick={closeOverlay}>
+      <div
+        className="avail-overlay-container"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="avail-overlay-header">
+          <div>
+            <h2>Set Availability</h2>
+            <p>Choose the days you're available next week</p>
           </div>
-        ))}
+          <button className="avail-close-btn" onClick={closeOverlay}>
+            <i className="fa-solid fa-xmark" />
+          </button>
+        </div>
+
+        <div className="avail-days-wrapper">
+          {weekDays.map((day) => (
+            <div
+              key={day.iso}
+              className={`avail-day-card ${selectedDates.includes(day.iso) ? "selected" : ""
+                }`}
+              onClick={() => toggleDate(day.iso)}
+            >
+              <div className="avail-day-check">
+                {selectedDates.includes(day.iso) ? (
+                  <i className="fa-solid fa-circle-check" />
+                ) : (
+                  <i className="fa-regular fa-circle" />
+                )}
+              </div>
+              <p className="avail-day-name">{day.dayName}</p>
+              <p className="avail-day-date">{day.formattedDate}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="avail-overlay-footer">
+          <span className="avail-selected-count">
+            {selectedDates.length} day{selectedDates.length !== 1 ? "s" : ""} selected
+          </span>
+          <div className="avail-footer-btns">
+            <button className="avail-cancel-btn" onClick={closeOverlay}>
+              Cancel
+            </button>
+            <button
+              className="avail-save-btn"
+              onClick={handleSave}
+              disabled={selectedDates.length === 0}
+            >
+              <i className="fa-solid fa-check" /> Save
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

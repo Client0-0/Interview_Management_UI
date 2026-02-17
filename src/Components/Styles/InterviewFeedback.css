@@ -1,204 +1,256 @@
-/* Container */
-.feedback-container {
-  max-width: 800px;
-  width: 90%;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-sizing: border-box;
+/* =========================================================
+   INTERVIEW FEEDBACK — PREMIUM UI
+   Matches the Panel Dashboard design system (--panel-*)
+========================================================= */
+
+body {
+  background-color: #f8fafc;
+  /* Fallback */
 }
 
-/* Dashboard Header */
+/* Page Layout */
+.feedback-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* Header */
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
 }
 
-/* .dashboard-header div {
-  text-align: center;
-  flex: 1 1 70%;
-} */
- .dashboard-header div{
-    margin-left: 10%;
-    flex:1 1 60%
- }
+.dashboard-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--panel-text-main, #1e293b);
+  margin: 0 0 0.25rem 0;
+}
 
+.dashboard-header .name {
+  font-size: 0.95rem;
+  color: var(--panel-text-sub, #64748b);
+  margin: 0;
+}
 
-
-
-
-/* Logout Button */
 .logout-btn {
-  background-color: #ff5b5b;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #fee2e2;
+  background: #fef2f2;
+  color: #dc2626;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  flex: 1 1 5%;
-  min-width: 120px;
-  text-align: center;
+  transition: all 0.2s;
 }
 
-/* Section Titles */
-.feedback-container h2 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
+.logout-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
 }
 
-.feedback-container p {
-  margin-bottom: 20px;
-  color: #555;
-  font-size: 1rem;
+/* Glass Container */
+.feedback-container {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
 }
 
-/* Form Sections */
-.rating-section, .textarea-section, .recommendation-section {
-  margin-bottom: 20px;
+/* Section Styling */
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--panel-text-main, #1e293b);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.textarea-section,
+.rating-section,
+.recommendation-section {
+  margin-bottom: 2rem;
 }
 
 label {
-  font-weight: 500;
   display: block;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
-}
-
-textarea {
-  width: 100%;
-  min-height: 60px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  resize: vertical;
-  font-size: 0.95rem;
-  box-sizing: border-box;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--panel-text-main, #334155);
+  margin-bottom: 0.75rem;
 }
 
 /* Stars */
 .stars {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  background: white;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  width: fit-content;
 }
 
 .star {
-  font-size: 24px;
-  color: #ccc;
+  font-size: 1.75rem;
+  color: #cbd5e1;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: all 0.2s;
 }
 
+.star:hover,
 .star.selected {
-  color: gold;
+  color: #fbbf24;
+  transform: scale(1.1);
 }
 
 .select-rating {
-  margin-left: 10px;
-  color: #888;
-  font-size: 14px;
+  margin-left: 12px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 500;
 }
 
-/* Recommendation Options */
+/* Textareas */
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #1e293b;
+  resize: vertical;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.01);
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--panel-primary, #4f46e5);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Recommendation */
 .recommendation-section div {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .radio-label {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  padding: 0.75rem 1.25rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
   font-size: 0.95rem;
+  font-weight: 500;
+  color: #475569;
 }
+
+.radio-label:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.radio-label input {
+  accent-color: var(--panel-primary, #4f46e5);
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* Selected state for radio labels if we controlled strict styling, 
+   but :checked sibling selector is tricky without structure change. 
+   Default accent-color handles it well enough for now. */
 
 /* Buttons */
 .buttons {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
 }
 
 .cancel-btn {
-  background-color: #f5f5f5;
-  color: #333;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  flex: 1 1 45%;
-  min-width: 120px;
+  transition: all 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #f1f5f9;
+  color: #334155;
 }
 
 .submit-btn {
-  background-color: #635bff;
-  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 10px;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  background: linear-gradient(135deg, var(--panel-primary, #4f46e5) 0%, #4338ca 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  flex: 1 1 45%;
-  min-width: 120px;
+  box-shadow: 0 4px 12px -2px rgba(79, 70, 229, 0.3);
+  transition: all 0.2s;
 }
 
-/* Responsive Styles */
+.submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px -2px rgba(79, 70, 229, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .dashboard-header {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  .feedback-page {
+    padding: 1rem;
   }
 
-  .logout-btn {
-    flex: 1 1 100%;
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
   .feedback-container {
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 1.6rem;
-  }
-
-  .name {
-    font-size: 1.2rem;
-  }
-
-  textarea {
-    min-height: 50px;
-  }
-
-  .stars {
-    gap: 3px;
-  }
-
-  .select-rating {
-    font-size: 12px;
-  }
-
-  .radio-label {
-    font-size: 0.9rem;
+    padding: 1.5rem;
   }
 
   .buttons {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   .cancel-btn,
   .submit-btn {
-    flex: 1 1 100%;
     width: 100%;
+    text-align: center;
   }
 }

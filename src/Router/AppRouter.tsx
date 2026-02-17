@@ -59,6 +59,7 @@ const PanelLayout = lazy(() => import("../Components/PanelDashboard/Layout/Panel
 const PanelDashboard = lazy(() => import("../Components/PanelDashboard/PanelDashboard"));
 const Reassign = lazy(() => import("../Components/PanelDashboard/ReassignPage"));
 const SetAvailability = lazy(() => import("../Components/PanelDashboard/SetAvailability"));
+const PanelCandidateDetails = lazy(() => import("../Components/PanelDashboard/PanelCandidateDetails"));
 
 export const router = createBrowserRouter([
   { path: "/", element: <Navigate to="/login" replace /> },
@@ -343,7 +344,10 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <PanelDashboard /> },
           { path: "reassign/:id", element: <Reassign /> },
+          { path: "reassign/:id", element: <Reassign /> },
           { path: "setavailability", element: <SetAvailability /> },
+          { path: "interviewfeedback", element: <InterviewFeedback /> },
+          { path: "details/:candidateId", element: <PanelCandidateDetails /> },
         ],
       },
     ],
