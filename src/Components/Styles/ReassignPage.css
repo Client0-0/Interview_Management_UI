@@ -86,8 +86,11 @@ p {
 
 .radio-item {
   display: flex;
+  flex-direction: row;
+  /* Force horizontal alignment */
   align-items: center;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 12px;
   font-size: 0.95rem;
   color: #475569;
   cursor: pointer;
