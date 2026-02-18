@@ -82,16 +82,32 @@
 
 .data-table th,
 .data-table td {
-  padding: 10px;
+  padding: 12px 16px;
   border-bottom: 1px solid #e5e7eb;
   text-align: left;
-  font-size: 13px;
+  font-size: 14px;
   white-space: nowrap;
+  vertical-align: middle;
 }
 
 .data-table th {
   font-weight: 600;
   color: #374151;
+  background-color: #f9fafb;
+}
+
+/* Name column expands */
+.data-table th:first-child,
+.data-table td:first-child {
+  width: 30%;
+  min-width: 200px;
+}
+
+/* Actions column centered */
+.data-table th:last-child,
+.data-table td:last-child {
+  text-align: center;
+  width: 80px;
 }
 
 /* ================= STATUS PILL ================= */
@@ -152,8 +168,11 @@
 
 /* ================= ACTIONS ================= */
 
+/* ================= ACTIONS - COMMENTED OUT FOR GLOBAL ================= */
+/*
 .actions-cell {
   display: flex;
+  justify-content: center;
   gap: 8px;
   position: relative;
 }
@@ -172,6 +191,11 @@
 .icon-btn.edit {
   color: #f59e0b;
 }
+
+.icon-btn.delete {
+  color: #b91c1c
+}
+*/
 
 /* ================= PAGINATION ================= */
 .pagination {
@@ -288,3 +312,142 @@
     flex-wrap: wrap;
   }
 }
+
+/* Action Buttons */
+/* 
+.action-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 0.9rem;
+}
+
+.action-icon-btn.edit-btn {
+  color: #2563eb;
+}
+
+.action-icon-btn.edit-btn:hover {
+  background-color: #eff6ff;
+}
+
+.action-icon-btn.delete-btn {
+  color: #dc2626;
+}
+
+.action-icon-btn.delete-btn:hover {
+  background-color: #fef2f2;
+}
+*/
+
+.flex {
+  display: flex;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+/* Dropdown Menu - COMMENTED OUT TO USE GLOBAL STYLES */
+/*
+.menu-container {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  color: #6b7280;
+  transition: background-color 0.2s;
+}
+
+.menu-btn:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 50;
+  min-width: 160px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  animation: fadeIn 0.1s ease-out;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  color: #374151;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+.menu-item i {
+  font-size: 0.9rem;
+  width: 16px;
+  text-align: center;
+}
+
+.menu-item.edit-btn:hover {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+.menu-item.edit-btn:hover i {
+  color: #2563eb;
+}
+
+.menu-item.delete-btn {
+  color: #dc2626;
+}
+
+.menu-item.delete-btn:hover {
+  background-color: #fef2f2;
+}
+
+.menu-item.delete-btn i {
+  color: #dc2626;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-btn.active {
+  background-color: #e5e7eb;
+  color: #111827;
+  transform: scale(1.05);
+}
+*/

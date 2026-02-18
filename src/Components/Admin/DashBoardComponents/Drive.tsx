@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useMemo, useState } from "react";
-
 import {
   getAllDrives,
   //getDriveConfiguration,
 } from "../../../Services/User.Service";
 //import DriveView from "../View/DriveView/DriveView";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import "./Styles/Drive.css";
 
 
 
@@ -47,7 +47,12 @@ const Drives: React.FC = () => {
   const [pageSize] = useState(3);
 
   /* Menu state */
+  /* Menu state */
   const [openMenu, setOpenMenu] = useState<number | null>(null);
+
+  // Close menu on outside click (optional, but good for UX - implemented inline in container or handled by global click if needed. Users.tsx has a click handler on section)
+
+
 
   /* Date helpers */
   const today = new Date().toISOString().split("T")[0];
@@ -241,7 +246,7 @@ const Drives: React.FC = () => {
                 </td>
               </tr>
             )}
-            {pagedDrives.map((d, i) => (
+            {pagedDrives.map((d) => (
               <tr key={d.driveId}>
                 <td><div className="font-medium">{d.driveName}</div></td>
                 <td className="text-muted">{d.driveDate}</td>
@@ -265,37 +270,44 @@ const Drives: React.FC = () => {
                     onClick={(e) => e.stopPropagation()}
                   >
                     <button
-                      className="menu-btn"
-                      onClick={() =>
-                        setOpenMenu(openMenu === i ? null : i)
-                      }
+                      className={`menu-btn ${openMenu === d.driveId ? 'active' : ''}`}
+                      onClick={() => setOpenMenu(openMenu === d.driveId ? null : d.driveId)}
                     >
                       <i className="fa-solid fa-ellipsis-vertical"></i>
                     </button>
 
-                    {openMenu === i && (
+                    {openMenu === d.driveId && (
                       <div className="menu-dropdown">
                         <button
-                          className="menu-item add-btn"
-                          onClick={() => navigate(`view/${d.driveId}/addcandidate`)}
-                        >
-                          <i className="fa-solid fa-user-plus text-muted"></i>
-                          <span>Add Candidate</span>
-                        </button>
-                        <button
                           className="menu-item view-btn"
-                          onClick={() => navigate(`view/${d.driveId}`)}
+                          onClick={() => {
+                            navigate(`view/${d.driveId}`);
+                            setOpenMenu(null);
+                          }}
                         >
                           <i className="fa-solid fa-eye text-muted"></i>
                           <span>View</span>
                         </button>
-
                         <button
                           className="menu-item edit-btn"
-                          onClick={() => navigate(`edit/${d.driveId}`)}
+                          onClick={() => {
+                            console.log("Mock Edit:", d.driveId);
+                            navigate(`edit/${d.driveId}`);
+                            setOpenMenu(null);
+                          }}
                         >
                           <i className="fa-solid fa-pen text-muted"></i>
                           <span>Edit</span>
+                        </button>
+                        <button
+                          className="menu-item delete-btn"
+                          onClick={() => {
+                            console.log("Delete:", d.driveId);
+                            setOpenMenu(null);
+                          }}
+                        >
+                          <i className="fa-solid fa-trash text-muted"></i>
+                          <span>Delete</span>
                         </button>
                       </div>
                     )}
@@ -306,34 +318,36 @@ const Drives: React.FC = () => {
           </tbody>
         </table>
 
-        {totalPages > 1 && (
-          <div className="pagination p-4 flex justify-center gap-2">
-            <button
-              className="btn secondary"
-              disabled={currentPage === 1}
-              onClick={prevPage}
-            >
-              &lt;
-            </button>
-            <span className="flex items-center px-2 text-sm text-muted">
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              className="btn secondary"
-              disabled={currentPage === totalPages}
-              onClick={nextPage}
-            >
-              &gt;
-            </button>
-          </div>
-        )}
-      </div>
+        {
+          totalPages > 1 && (
+            <div className="pagination p-4 flex justify-center gap-2">
+              <button
+                className="btn secondary"
+                disabled={currentPage === 1}
+                onClick={prevPage}
+              >
+                &lt;
+              </button>
+              <span className="flex items-center px-2 text-sm text-muted">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                className="btn secondary"
+                disabled={currentPage === totalPages}
+                onClick={nextPage}
+              >
+                &gt;
+              </button>
+            </div>
+          )
+        }
+      </div >
 
 
 
       <Outlet />
 
-    </section>
+    </section >
   );
 };
 

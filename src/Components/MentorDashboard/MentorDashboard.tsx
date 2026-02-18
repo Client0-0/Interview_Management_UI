@@ -274,24 +274,37 @@ const MentorDashboard: React.FC = () => {
                     </div>
 
                     <div className="info-grid">
+                      {/* CONTACT SECTION */}
                       <div className="info-item">
-                        <span className="label">Contact</span>
-                        <div className="value">
+                        <span className="section-label">Contact</span>
+                        <div className="info-value">
                           <i className="fa-solid fa-envelope"></i> {item.email}
                         </div>
-                        <div className="value">
+                        <div className="info-value">
                           <i className="fa-solid fa-phone"></i> {item.phone}
                         </div>
                       </div>
 
+                      {/* DETAILS SECTION */}
                       <div className="info-item">
-                        <span className="label">Interviewer</span>
+                        <span className="section-label">Details</span>
+                        <div className="info-value">
+                          <i className="fa-solid fa-graduation-cap"></i> {item.college || "N/A"}
+                        </div>
+                        <div className="info-value">
+                          <i className="fa-solid fa-briefcase"></i> {item.candidateExperienceLevel || "0"} years exp.
+                        </div>
+                      </div>
+
+                      {/* INTERVIEWER SECTION */}
+                      <div className="info-item">
+                        <span className="section-label">Interviewer</span>
                         {item.interviewerName ? (
-                          <div className="value highlight">
+                          <div className="info-value highlight">
                             <i className="fa-solid fa-user-tie"></i> {item.interviewerName}
                           </div>
                         ) : (
-                          <div className="value text-muted">
+                          <div className="info-value text-muted">
                             <i className="fa-solid fa-ban"></i> Not Assigned
                           </div>
                         )}
@@ -300,7 +313,7 @@ const MentorDashboard: React.FC = () => {
                   </div>
 
                   <div className="card-actions">
-                    <button className="btn-minimal">View Details</button>
+                    <button className="btn-primary">View Details</button>
                   </div>
                 </div>
               ))}

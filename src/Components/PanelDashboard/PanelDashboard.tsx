@@ -7,14 +7,16 @@ import {
   FaClipboardList,
   FaCheckCircle,
   FaClock,
-  FaCommentDots,
   FaCalendarCheck,
+  FaUsers,
 } from "react-icons/fa";
+import PanelAvailabilityModal from "./PanelAvailabilityModal";
 
 const PanelDashboard: React.FC = () => {
   const [candidates, setCandidates] = useState<MentorCandidate[]>([]);
   const [searchText, setSearchText] = useState("");
   const [loading, setLoading] = useState(true);
+  const [isPanelModalOpen, setIsPanelModalOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -110,13 +112,13 @@ const PanelDashboard: React.FC = () => {
         <section className="panel-quick-actions-section">
           <h3 className="panel-section-title">Quick Actions</h3>
           <div className="panel-actions-grid">
-            <button className="panel-card panel-action-card" onClick={() => navigate("/panel/interviewfeedback")}>
+            <button className="panel-card panel-action-card" onClick={() => setIsPanelModalOpen(true)}>
               <div className="panel-action-icon-wrapper">
-                <FaCommentDots />
+                <FaUsers />
               </div>
               <div className="panel-action-details">
-                <strong>Submit Feedback</strong>
-                <p>Provide interview feedback</p>
+                <strong>View Other Panels</strong>
+                <p>Check panel availability</p>
               </div>
               <i className="fa-solid fa-chevron-right panel-arrow-icon"></i>
             </button>
@@ -156,7 +158,7 @@ const PanelDashboard: React.FC = () => {
           <div className="panel-candidates-scroll-container">
             <div className="panel-candidates-grid">
               {filteredCandidates.map((c) => (
-                <div key={c.candidateId} className="panel-card panel-candidate-card">
+                <div key={c.candidateId} className="panel-card panel-candidate-card" data-round={c.roundType}>
                   <div className="panel-card-top-accent" data-round={c.roundType}></div>
 
                   <div className="panel-card-main">
@@ -217,6 +219,11 @@ const PanelDashboard: React.FC = () => {
         </section>
 
       </div>
+      <PanelAvailabilityModal
+        isOpen={isPanelModalOpen}
+        onClose={() => setIsPanelModalOpen(false)}
+        driveName={candidates[0]?.driveName}
+      />
     </div>
   );
 };

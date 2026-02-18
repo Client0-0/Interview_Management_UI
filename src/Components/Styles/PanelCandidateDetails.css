@@ -291,3 +291,18 @@
         justify-content: center;
     }
 }
+/* Footer */
+.details-footer {
+    padding: 2rem 2.5rem;
+    background: linear-gradient(to bottom, #ffffff, #f8fafc);
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.large-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px -4px var(--panel-primary);
+}

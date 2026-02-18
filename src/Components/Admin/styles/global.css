@@ -399,8 +399,9 @@ label {
 }
 
 .data-table tbody tr:hover {
-  background-color: var(--primary-light);
-  /* subtly highlight row */
+  background-color: #f8fafc;
+  /* Subtle neutral highlight */
+  transition: background-color 0.2s ease;
 }
 
 /* Status Badges */
@@ -660,7 +661,8 @@ label {
 }
 
 .data-table tbody tr:hover td {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(248, 250, 252, 0.8);
+  /* Subtle neutral for glass tables */
 }
 
 .font-medium {
@@ -719,6 +721,13 @@ label {
 .actions-cell {
   width: 60px;
   text-align: center;
+}
+
+.menu-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-btn {

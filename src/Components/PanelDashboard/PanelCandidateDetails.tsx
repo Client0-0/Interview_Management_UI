@@ -77,98 +77,101 @@ const PanelCandidateDetails: React.FC = () => {
                         >
                             <FaExchangeAlt /> Reassign
                         </button>
-                        <button
-                            className="action-btn primary"
-                            onClick={() => navigate("/panel/interviewfeedback", { state: { candidate } })}
-                        >
-                            <FaUserCheck /> Submit Feedback
-                        </button>
                     </div>
                 </div>
+            </div>
 
-                {/* Content Grid */}
-                <div className="details-content">
-                    {/* Left Column: Info */}
-                    <div className="left-col">
-                        <section className="details-section">
-                            <h3><FaEnvelope /> Contact Information</h3>
-                            <div className="info-row">
-                                <div className="info-item">
-                                    <span className="info-label">Email Address</span>
-                                    <div className="info-value">{candidate.email}</div>
-                                </div>
-                                <div className="info-item">
-                                    <span className="info-label">Phone Number</span>
-                                    <div className="info-value"><FaPhone /> {candidate.phone}</div>
+            {/* Content Grid */}
+            <div className="details-content">
+                {/* Left Column: Info */}
+                <div className="left-col">
+                    <section className="details-section">
+                        <h3><FaEnvelope /> Contact Information</h3>
+                        <div className="info-row">
+                            <div className="info-item">
+                                <span className="info-label">Email Address</span>
+                                <div className="info-value">{candidate.email}</div>
+                            </div>
+                            <div className="info-item">
+                                <span className="info-label">Phone Number</span>
+                                <div className="info-value"><FaPhone /> {candidate.phone}</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="details-section">
+                        <h3><FaGraduationCap /> Professional Details</h3>
+                        <div className="info-row">
+                            <div className="info-item">
+                                <span className="info-label">Experience</span>
+                                <div className="info-value">{candidate.Experience}</div>
+                            </div>
+                            <div className="info-item">
+                                <span className="info-label">Current Role</span>
+                                <div className="info-value">{candidate.candidatePosition}</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="details-section">
+                        <h3><FaCode /> Technical Skills</h3>
+                        <div className="skills-wrapper">
+                            {candidate.Skills?.map((skill, index) => (
+                                <span key={index} className="skill-tag">
+                                    {skill}
+                                </span>
+                            )) || <span className="text-muted">No skills listed</span>}
+                        </div>
+                    </section>
+
+                    <section className="details-section">
+                        <h3><FaFileAlt /> Resume Summary</h3>
+                        <div className="resume-box">
+                            <p className="resume-summary">
+                                {candidate.resumeSummary || "No resume summary available for this candidate."}
+                            </p>
+                        </div>
+                    </section>
+                </div>
+
+                {/* Right Column: Timeline/Metadata */}
+                <div className="right-col">
+                    <div className="side-column">
+                        <h3>Interview Timeline</h3>
+                        <div className="timeline">
+                            <div className="timeline-item">
+                                <div className="timeline-dot"></div>
+                                <div className="timeline-content">
+                                    <h4>Application Received</h4>
+                                    <span>{new Date().toLocaleDateString()}</span>
                                 </div>
                             </div>
-                        </section>
-
-                        <section className="details-section">
-                            <h3><FaGraduationCap /> Professional Details</h3>
-                            <div className="info-row">
-                                <div className="info-item">
-                                    <span className="info-label">Experience</span>
-                                    <div className="info-value">{candidate.Experience}</div>
-                                </div>
-                                <div className="info-item">
-                                    <span className="info-label">Current Role</span>
-                                    <div className="info-value">{candidate.candidatePosition}</div>
+                            <div className="timeline-item">
+                                <div className="timeline-dot"></div>
+                                <div className="timeline-content">
+                                    <h4>Screening Round</h4>
+                                    <span>Passed</span>
                                 </div>
                             </div>
-                        </section>
-
-                        <section className="details-section">
-                            <h3><FaCode /> Technical Skills</h3>
-                            <div className="skills-wrapper">
-                                {candidate.Skills?.map((skill, index) => (
-                                    <span key={index} className="skill-tag">
-                                        {skill}
-                                    </span>
-                                )) || <span className="text-muted">No skills listed</span>}
-                            </div>
-                        </section>
-
-                        <section className="details-section">
-                            <h3><FaFileAlt /> Resume Summary</h3>
-                            <div className="resume-box">
-                                <p className="resume-summary">
-                                    {candidate.resumeSummary || "No resume summary available for this candidate."}
-                                </p>
-                            </div>
-                        </section>
-                    </div>
-
-                    {/* Right Column: Timeline/Metadata */}
-                    <div className="right-col">
-                        <div className="side-column">
-                            <h3>Interview Timeline</h3>
-                            <div className="timeline">
-                                <div className="timeline-item">
-                                    <div className="timeline-dot"></div>
-                                    <div className="timeline-content">
-                                        <h4>Application Received</h4>
-                                        <span>{new Date().toLocaleDateString()}</span>
-                                    </div>
-                                </div>
-                                <div className="timeline-item">
-                                    <div className="timeline-dot"></div>
-                                    <div className="timeline-content">
-                                        <h4>Screening Round</h4>
-                                        <span>Passed</span>
-                                    </div>
-                                </div>
-                                <div className="timeline-item">
-                                    <div className="timeline-dot"></div>
-                                    <div className="timeline-content">
-                                        <h4>Technical Round {candidate.interviewRound}</h4>
-                                        <span style={{ color: "var(--panel-primary)", fontWeight: 600 }}>Scheduled (Today)</span>
-                                    </div>
+                            <div className="timeline-item">
+                                <div className="timeline-dot"></div>
+                                <div className="timeline-content">
+                                    <h4>Technical Round {candidate.interviewRound}</h4>
+                                    <span style={{ color: "var(--panel-primary)", fontWeight: 600 }}>Scheduled (Today)</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="details-footer">
+                <button
+                    className="action-btn primary large-btn"
+                    onClick={() => navigate("/panel/interviewfeedback", { state: { candidate } })}
+                >
+                    <FaUserCheck /> Submit Feedback
+                </button>
             </div>
         </div>
     );

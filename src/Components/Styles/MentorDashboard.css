@@ -332,7 +332,7 @@
 
 .candidate-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
@@ -340,8 +340,8 @@
 }
 
 .avatar-placeholder {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   background: var(--mentor-bg);
   color: var(--mentor-primary);
   border-radius: 50%;
@@ -349,7 +349,8 @@
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  flex-shrink: 0;
 }
 
 .candidate-info-header {
@@ -396,6 +397,7 @@
   color: #B91C1C;
 }
 
+/* ================= CARD INFO SECTIONS ================= */
 .info-grid {
   display: flex;
   flex-direction: column;
@@ -405,28 +407,34 @@
 .info-item {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
 }
 
-.info-item .label {
+.section-label {
   font-size: 0.75rem;
   text-transform: uppercase;
   color: var(--mentor-text-sub);
   letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
-.info-item .value {
-  font-size: 0.9rem;
+.info-value {
+  font-size: 0.95rem;
   color: var(--mentor-text-main);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.25rem;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+  width: 100%;
 }
 
-.info-item .value i {
+.info-value i {
   color: var(--mentor-text-sub);
-  font-size: 0.8rem;
   width: 16px;
   text-align: center;
 }
@@ -443,18 +451,23 @@
   text-align: center;
 }
 
-.btn-minimal {
-  background: transparent;
+.btn-primary {
+  background: var(--mentor-primary);
+  color: white;
   border: none;
-  color: var(--mentor-primary);
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
   width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.2s;
 }
 
-.btn-minimal:hover {
-  text-decoration: underline;
+.btn-primary:hover {
+  background: #4338CA;
+  box-shadow: 0 4px 12px -2px rgba(79, 70, 229, 0.3);
 }
 
 /* ================= RESPONSIVE ================= */
