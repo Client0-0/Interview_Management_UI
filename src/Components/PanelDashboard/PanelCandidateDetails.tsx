@@ -31,6 +31,22 @@ const PanelCandidateDetails: React.FC = () => {
                 }
             } catch (err) {
                 console.error("Failed to load candidate", err);
+                // ─── Mock fallback (no backend) ───
+                setCandidate({
+                    candidateId: Number(candidateId),
+                    fullName: "Sneha Reddy",
+                    email: "sneha.r@gmail.com",
+                    phone: "8765432100",
+                    candidatePosition: "Senior React Developer",
+                    experience: "5 years",
+                    Experience: "5 years", // specific field match
+                    skills: ["React", "TypeScript", "Node.js", "Redux"],
+                    Skills: ["React", "TypeScript", "Node.js", "Redux"], // specific field match
+                    resumeUrl: "#",
+                    resumeSummary: "Experienced React developer with a strong background in building scalable web applications. Proficient in TypeScript and modern state management libraries.",
+                    interviewRound: 1,
+                    status: "Scheduled"
+                } as any);
             } finally {
                 setLoading(false);
             }

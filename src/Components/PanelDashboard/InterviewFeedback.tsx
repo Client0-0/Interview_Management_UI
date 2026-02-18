@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import "../Styles/InterviewFeedback.css";
 import { submitFeedback } from "../../Services/InterviewFeedbackService";
 import { notifySuccess, notifyError } from "../../Utils/toastHelper";
@@ -13,6 +14,9 @@ interface Feedback {
 }
 
 const InterviewFeedback: React.FC = () => {
+  const location = useLocation();
+  const candidate = location.state?.candidate; // Retrieve candidate from state
+
   const [feedback, setFeedback] = useState<Feedback>({
     overallRating: 0,
     technicalSkills: "",
@@ -45,7 +49,7 @@ const InterviewFeedback: React.FC = () => {
       <header className="dashboard-header">
         <div>
           <h1>Interview Feedback Dashboard</h1>
-          <p className="name">For Karan</p>
+          <p className="name">For {candidate?.fullName || "Candidate"}</p>
         </div>
         <button className="logout-btn">Logout</button>
       </header>
