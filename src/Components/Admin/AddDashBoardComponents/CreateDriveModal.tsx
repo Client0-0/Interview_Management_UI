@@ -44,13 +44,42 @@ const CreateDriveModal: React.FC<Props> = ({ onNext, onClose }) => {
   /* ================= LOAD USERS ================= */
   useEffect(() => {
     const loadData = async () => {
-      const hrRes = await getAllHrs();
-      const mentorRes = await getAllMentors();
-      const panelRes = await getAllPanels();
+      // ─── Mock Data ───
+      const mockHrs: User[] = [
+        { userId: 101, fullName: "Alice HR" },
+        { userId: 102, fullName: "Bob HR" },
+        { userId: 103, fullName: "Charlie HR" },
+      ];
+      const mockMentors: User[] = [
+        { userId: 201, fullName: "David Mentor" },
+        { userId: 202, fullName: "Eva Mentor" },
+        { userId: 203, fullName: "Frank Mentor" },
+      ];
+      const mockPanels: User[] = [
+        { userId: 301, fullName: "Grace Panel" },
+        { userId: 302, fullName: "Hank Panel" },
+        { userId: 303, fullName: "Ivy Panel" },
+      ];
 
-      setHrList(hrRes.data?.data ?? hrRes.data ?? []);
-      setMentorList(mentorRes.data?.data ?? mentorRes.data ?? []);
-      setPanelList(panelRes.data?.data ?? panelRes.data ?? []);
+      try {
+        const hrRes = await getAllHrs();
+        const mentorRes = await getAllMentors();
+        const panelRes = await getAllPanels();
+
+        const hrs = hrRes.data?.data ?? hrRes.data ?? [];
+        const mentors = mentorRes.data?.data ?? mentorRes.data ?? [];
+        const panels = panelRes.data?.data ?? panelRes.data ?? [];
+
+        // Combine real + mock, or just use mock if real is empty
+        setHrList(hrs.length > 0 ? hrs : mockHrs);
+        setMentorList(mentors.length > 0 ? mentors : mockMentors);
+        setPanelList(panels.length > 0 ? panels : mockPanels);
+      } catch (err) {
+        console.error("Failed to load users, using mock data", err);
+        setHrList(mockHrs);
+        setMentorList(mockMentors);
+        setPanelList(mockPanels);
+      }
     };
 
     loadData();
