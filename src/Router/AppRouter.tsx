@@ -21,7 +21,6 @@ import EditUserRoute from "../Components/Admin/Edit/EditUserRoute";
 import AddPanelModal from "../Components/Admin/AddDashBoardComponents/AddPanelModal";
 import AddHRModal from "../Components/Admin/AddDashBoardComponents/AddHrModel";
 import AddMentorModal from "../Components/Admin/AddDashBoardComponents/AddMentorModel";
-import CandidateDetails from "../Components/CandidateDashboard/CandidateDetails";
 import AddCandidateModal from "../Components/Admin/AddDashBoardComponents/AddCandidateModal";
 import CandidateView from "../Components/Admin/View/CandidateView";
 import CandidateEditRoute from "../Components/Admin/Edit/CandidateEditRoute";
@@ -47,6 +46,8 @@ const Drives = lazy(() => import("../Components/Admin/DashBoardComponents/Drive"
 /* HR */
 const HRLayout = lazy(() => import("../Components/HRDashboard/Layout/HRLayout"));
 const HRDashboard = lazy(() => import("../Components/HRDashboard/HRDashBoard"));
+const CandidatesToday = lazy(() => import("../Components/HRDashboard/CandidatesToday"));
+const CandidateManagement = lazy(() => import("../Components/HRDashboard/CandidateManagement"));
 
 /* MENTOR */
 const MentorLayout = lazy(() => import("../Components/MentorDashboard/Layout/MentorLayout"));
@@ -297,7 +298,8 @@ export const router = createBrowserRouter([
         element: <HRLayout />,
         children: [
           { index: true, element: <HRDashboard /> },
-          { path: "candidatemanagement", element: <CandidateDetails /> }
+          { path: "candidates", element: <CandidatesToday onViewDetails={(c) => console.log('View', c)} /> },
+          { path: "candidatemanagement", element: <CandidateManagement onBulkUpload={() => { }} onViewDetails={(c) => console.log('View', c)} /> }
         ],
       },
     ],

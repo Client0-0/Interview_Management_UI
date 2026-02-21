@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Users, UserCheck, Upload, Calendar } from 'lucide-react';
 import DashboardCard from "../common/DashboardCard";
+import PanelAvailability from "./PanelAvailability";
 import "./Styles/HRDashboard.css";
 
 const HRDashboard: React.FC = () => {
   const navigate = useNavigate();
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
+
   const currentDate = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
     year: 'numeric',
@@ -32,7 +35,7 @@ const HRDashboard: React.FC = () => {
             value="8"
             subtext="Interviewers ready"
             actionText="View Panel Availability"
-            onClick={() => { }}
+            onClick={() => setIsPanelOpen(true)}
           />
 
           <DashboardCard
@@ -42,7 +45,7 @@ const HRDashboard: React.FC = () => {
             value="12"
             subtext="Scheduled for interviews"
             actionText="View Details"
-            onClick={() => navigate("candidates")} // Assuming 'candidates' route for candidate details
+            onClick={() => navigate("candidates")}
           />
 
           <DashboardCard
@@ -56,6 +59,7 @@ const HRDashboard: React.FC = () => {
         </div>
 
       </div>
+      <PanelAvailability isOpen={isPanelOpen} onClose={() => setIsPanelOpen(false)} />
     </div>
   );
 };

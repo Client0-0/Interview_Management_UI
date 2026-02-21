@@ -80,6 +80,19 @@
 
   /* Transitions */
   --transition: all 0.2s ease-in-out;
+
+  /* --- Added CSS Variables for HR Dashboard Components --- */
+  --color-primary: var(--primary);
+  --color-primary-rgb: 79, 70, 229;
+  --color-success: var(--success);
+  --color-accent: #8b5cf6;
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-text-light: var(--text-placeholder);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-blur: 10px;
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --font-display: 'Inter', sans-serif;
 }
 
 /* Reset & Base */
