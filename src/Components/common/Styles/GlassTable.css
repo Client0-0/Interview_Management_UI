@@ -73,13 +73,20 @@
 }
 
 .users-toolbar input {
-    border: none;
-    background: transparent;
+    border: none !important;
+    background: transparent !important;
     padding: 0.75rem 0.5rem;
     width: 100%;
     font-size: 0.95rem;
-    outline: none;
+    outline: none !important;
     color: var(--text-main);
+    box-shadow: none !important;
+}
+
+.users-toolbar input:focus {
+    outline: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
 }
 
 .users-toolbar .input-icon {
