@@ -28,6 +28,7 @@ import AddCandidate from "../Components/Admin/AddDashBoardComponents/AddCandidat
 import AttendanceManagement from "../Components/MentorDashboard/AttendanceManagement";
 import Availability from "../Components/MentorDashboard/Availability";
 import ReassignPage from "../Components/PanelDashboard/ReassignPage";
+import BulkUploadCandidates from "../Components/Admin/DashBoardComponents/BulkUploadCandidates";
 //import ReassignPage from "../Components/PanelDashboard/ReassignPage";
 
 /* PUBLIC */
@@ -109,7 +110,8 @@ export const router = createBrowserRouter([
             children: [
               { path: "addcandidate", element: <AddCandidateModal /> },
               { path: "viewcandidate", element: <CandidateView /> },
-              { path: "editcandidate/:candidateId", element: <CandidateEditRoute /> }
+              { path: "editcandidate/:candidateId", element: <CandidateEditRoute /> },
+              { path: "bulkupload", element: <BulkUploadCandidates onBack={() => window.history.back()} /> }
             ],
           },
           {

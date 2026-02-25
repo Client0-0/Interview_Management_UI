@@ -1,1 +1,0 @@
-import{P as e,k as t}from"./index-D7sT5g1l.js";const n=async e=>await t.post(`/Auth/token`,e),r=()=>{e()};export{r as n,n as t};

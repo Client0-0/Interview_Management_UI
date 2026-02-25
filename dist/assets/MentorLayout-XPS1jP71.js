@@ -1,1 +1,0 @@
-import{N as e,z as t}from"./index-D7sT5g1l.js";import"./Auth.Service-Ruw_Gyzi.js";import{t as n}from"./Header-BO3qQoMd.js";var r=e(),i=()=>(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(n,{}),(0,r.jsx)(t,{})]});export{i as default};
