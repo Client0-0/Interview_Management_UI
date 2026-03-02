@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Upload, Mail, Phone, Calendar, Briefcase, CheckCircle, Clock, Users, ArrowUpRight, Eye, Filter } from 'lucide-react';
+import { useNavigate, useOutlet } from 'react-router-dom';
 import Header from './Header';
 import ProgressRing from './ProgressRing';
 import styles from './CandidateManagement.module.css';
@@ -23,11 +24,14 @@ interface Candidate {
 }
 
 interface CandidateManagementProps {
-    onBulkUpload: () => void;
-    onViewDetails: (candidate: Candidate) => void;
+    onBulkUpload?: () => void;
+    onViewDetails?: (candidate: Candidate) => void;
 }
 
-const CandidateManagement: React.FC<CandidateManagementProps> = ({ onBulkUpload, onViewDetails }) => {
+const CandidateManagement: React.FC<CandidateManagementProps> = () => {
+    const navigate = useNavigate();
+    const outlet = useOutlet();
+
     const [activeTab, setActiveTab] = useState('All Candidates');
     const [showFilters, setShowFilters] = useState(true);
 
@@ -164,6 +168,9 @@ const CandidateManagement: React.FC<CandidateManagementProps> = ({ onBulkUpload,
 
     const [candidates, setCandidates] = useState<Candidate[]>(initialCandidates);
 
+    // ── If a child route is matched, render it full-page ──
+    if (outlet) return outlet;
+
     // Calculate dynamic tab counts based on current candidates state
     const getCount = (status: string) => {
         if (status === 'All Candidates') return candidates.length;
@@ -258,7 +265,7 @@ const CandidateManagement: React.FC<CandidateManagementProps> = ({ onBulkUpload,
                 title="Candidate Management"
                 subtitle={`${filteredCandidates.length} candidates`}
                 action={
-                    <button className={styles.bulkUploadButton} onClick={onBulkUpload}>
+                    <button className={styles.bulkUploadButton} onClick={() => navigate('bulkupload')}>
                         <Upload size={18} />
                         Bulk Upload
                     </button>
@@ -409,9 +416,11 @@ const CandidateManagement: React.FC<CandidateManagementProps> = ({ onBulkUpload,
                                             )}
                                             <button
                                                 className={styles.viewButton}
-                                                onClick={() => onViewDetails(candidate)}
-                                            >
-                                                <Eye size={16} />
+                                                onClick={() => {
+                                                    sessionStorage.setItem('hr_selected_candidate', JSON.stringify(candidate));
+                                                    navigate('details/' + candidate.id);
+                                                }}
+                                            >                                              <Eye size={16} />
                                                 View Details
                                             </button>
                                         </div>

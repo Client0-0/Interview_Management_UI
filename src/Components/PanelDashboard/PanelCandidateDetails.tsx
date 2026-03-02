@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import type { Candidate } from "../../Models/Candidate";
 import { ReassignService } from "../../Services/ReassignService";
 import "../Styles/PanelCandidateDetails.css";
@@ -18,11 +18,17 @@ import {
 const PanelCandidateDetails: React.FC = () => {
     const { candidateId } = useParams<{ candidateId: string }>();
     const navigate = useNavigate();
+    const location = useLocation();
 
-    const [candidate, setCandidate] = useState<Candidate | null>(null);
-    const [loading, setLoading] = useState(true);
+    const passedCandidate = (location.state as { candidate?: Candidate } | null)?.candidate ?? null;
+
+    const [candidate, setCandidate] = useState<Candidate | null>(passedCandidate);
+    const [loading, setLoading] = useState(!passedCandidate);
 
     useEffect(() => {
+        // Skip fetch if candidate was passed via navigation state
+        if (passedCandidate) return;
+
         const loadCandidate = async () => {
             try {
                 if (candidateId) {
@@ -38,22 +44,27 @@ const PanelCandidateDetails: React.FC = () => {
                     email: "sneha.r@gmail.com",
                     phone: "8765432100",
                     candidatePosition: "Senior React Developer",
-                    experience: "5 years",
-                    Experience: "5 years", // specific field match
-                    skills: ["React", "TypeScript", "Node.js", "Redux"],
-                    Skills: ["React", "TypeScript", "Node.js", "Redux"], // specific field match
+                    Experience: 5,
+                    Skills: ["React", "TypeScript", "Node.js", "Redux"],
                     resumeUrl: "#",
                     resumeSummary: "Experienced React developer with a strong background in building scalable web applications. Proficient in TypeScript and modern state management libraries.",
-                    interviewRound: 1,
-                    status: "Scheduled"
-                } as any);
+                    interviewRound: "1",
+                    status: "Scheduled",
+                    createdDate: new Date().toISOString(),
+                    driveCandidates: [],
+                    interviews: [],
+                    feedbacks: [],
+                    requests: [],
+                    time: "",
+                    panel: "",
+                } as Candidate);
             } finally {
                 setLoading(false);
             }
         };
 
         loadCandidate();
-    }, [candidateId]);
+    }, [candidateId, passedCandidate]);
 
     if (loading) return <div className="panel-details-page">Loading details...</div>;
     if (!candidate) return <div className="panel-details-page">Candidate not found.</div>;
@@ -89,7 +100,11 @@ const PanelCandidateDetails: React.FC = () => {
                     <div className="hero-actions">
                         <button
                             className="action-btn secondary"
-                            onClick={() => navigate(`/panel/reassign/${candidateId}`)}
+                            onClick={() =>
+                                navigate(`/panel/reassign/${candidateId}`, {
+                                    state: { candidate },
+                                })
+                            }
                         >
                             <FaExchangeAlt /> Reassign
                         </button>

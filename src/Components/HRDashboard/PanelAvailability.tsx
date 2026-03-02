@@ -8,9 +8,8 @@ interface PanelAvailabilityProps {
 }
 
 const PanelAvailability: React.FC<PanelAvailabilityProps> = ({ isOpen, onClose }) => {
-    if (!isOpen) return null;
-
     // Prevent background scrolling when modal is open
+    // ⚠️ Hook must be called BEFORE any early returns (Rules of Hooks)
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
@@ -21,6 +20,8 @@ const PanelAvailability: React.FC<PanelAvailabilityProps> = ({ isOpen, onClose }
             document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
+
+    if (!isOpen) return null;
 
 
     const mockData = [

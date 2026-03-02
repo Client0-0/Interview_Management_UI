@@ -113,8 +113,9 @@ const AddUserModal = () => {
       await adminAddNewUser(form);
       notifySuccess("User added successfully");
       navigate("/admin/users");
-    } catch (error: any) {
-      notifyError(error.message || "Something went wrong");
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Something went wrong";
+      notifyError(message);
     }
   };
 

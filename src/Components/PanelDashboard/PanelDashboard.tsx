@@ -201,13 +201,17 @@ const PanelDashboard: React.FC = () => {
                   <div className="panel-card-actions">
                     <button
                       className="panel-btn-primary"
-                      onClick={() => navigate(`/panel/details/${c.candidateId}`)}
+                      onClick={() => navigate(`/panel/details/${c.candidateId}`, { state: { candidate: c } })}
                     >
                       View Details
                     </button>
                     <button
                       className="panel-btn-outline"
-                      onClick={() => navigate(`/panel/reassign/${c.candidateId}`)}
+                      onClick={() =>
+                        navigate(`/panel/reassign/${c.candidateId}`, {
+                          state: { candidate: c },
+                        })
+                      }
                     >
                       Reassign
                     </button>

@@ -94,8 +94,9 @@ const AddMentorModal: React.FC = () => {
       await adminAddNewUser(form);
       notifySuccess("User added successfully");
       onClose();
-    } catch (error: any) {
-      notifyError(error.message || "Something went wrong");
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Something went wrong";
+      notifyError(message);
     }
   };
 

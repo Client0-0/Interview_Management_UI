@@ -313,7 +313,12 @@ const MentorDashboard: React.FC = () => {
                   </div>
 
                   <div className="card-actions">
-                    <button className="btn-primary">View Details</button>
+                    <button
+                      className="btn-primary"
+                      onClick={() => navigate(`details/${item.candidateId}`, { state: { candidate: item } })}
+                    >
+                      View Details
+                    </button>
                   </div>
                 </div>
               ))}

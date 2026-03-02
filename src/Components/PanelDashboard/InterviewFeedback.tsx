@@ -39,7 +39,7 @@ const InterviewFeedback: React.FC = () => {
     try {
       await submitFeedback(feedback);
       notifySuccess("Feedback submitted successfully!");
-    } catch (error) {
+    } catch {
       notifyError("Failed to submit feedback.");
     }
   };

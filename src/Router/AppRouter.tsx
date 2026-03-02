@@ -35,6 +35,8 @@ import BulkUploadCandidates from "../Components/Admin/DashBoardComponents/BulkUp
 /* PUBLIC */
 const Login = lazy(() => import("../Components/Login/Login"));
 const Signup = lazy(() => import("../Components/Signup"));
+const ForgotPassword = lazy(() => import("../Components/ForgetPassword/ForgotPassword"));
+const ChangePasswordPage = lazy(() => import("../Components/ChangePassword/ChangePasswordPage"));
 
 /* ADMIN */
 const AdminLayout = lazy(() => import("../Components/Admin/Layout/AdminLayout"));
@@ -51,12 +53,15 @@ const HRLayout = lazy(() => import("../Components/HRDashboard/Layout/HRLayout"))
 const HRDashboard = lazy(() => import("../Components/HRDashboard/HRDashBoard"));
 const CandidatesToday = lazy(() => import("../Components/HRDashboard/CandidatesToday"));
 const CandidateManagement = lazy(() => import("../Components/HRDashboard/CandidateManagement"));
+const HRBulkUpload = lazy(() => import("../Components/HRDashboard/HRBulkUpload"));
+const HRCandidateDetails = lazy(() => import("../Components/HRDashboard/HRCandidateDetails"));
 
 /* MENTOR */
 const MentorLayout = lazy(() => import("../Components/MentorDashboard/Layout/MentorLayout"));
 const MentorDashboard = lazy(() => import("../Components/MentorDashboard/MentorDashboard"));
 //const Attendance = lazy(() => import("../Components/MentorDashboard/AttendanceManagement"));
 const InterviewFeedback = lazy(() => import("../Components/PanelDashboard/InterviewFeedback"));
+const MentorCandidateDetails = lazy(() => import("../Components/MentorDashboard/MentorCandidateDetails"));
 
 /* PANEL */
 const PanelLayout = lazy(() => import("../Components/PanelDashboard/Layout/PanelLayout"));
@@ -84,6 +89,22 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <Signup />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/forgot-password",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ForgotPassword />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/change-password",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ChangePasswordPage />
           </Suspense>
         ),
       },
@@ -313,8 +334,21 @@ export const router = createBrowserRouter([
             element: <HRLayout />,
             children: [
               { index: true, element: <HRDashboard /> },
-              { path: "candidates", element: <CandidatesToday onViewDetails={(c) => console.log('View', c)} /> },
-              { path: "candidatemanagement", element: <CandidateManagement onBulkUpload={() => { }} onViewDetails={(c) => console.log('View', c)} /> }
+              {
+                path: "candidates",
+                element: <CandidatesToday />,
+                children: [
+                  { path: "details/:candidateId", element: <HRCandidateDetails /> },
+                ],
+              },
+              {
+                path: "candidatemanagement",
+                element: <CandidateManagement />,
+                children: [
+                  { path: "bulkupload", element: <HRBulkUpload /> },
+                  { path: "details/:candidateId", element: <HRCandidateDetails /> },
+                ],
+              },
             ],
           },
         ],
@@ -346,6 +380,10 @@ export const router = createBrowserRouter([
                 path: "interviewfeedback",
                 element: <InterviewFeedback />,
               },
+              {
+                path: "details/:candidateId",
+                element: <MentorCandidateDetails />,
+              },
             ],
           },
         ],
@@ -360,8 +398,7 @@ export const router = createBrowserRouter([
             element: <PanelLayout />,
             children: [
               { index: true, element: <PanelDashboard /> },
-              { path: "reassign/:id", element: <Reassign /> },
-              { path: "reassign/:id", element: <Reassign /> },
+              { path: "reassign/:candidateId", element: <Reassign /> },
               { path: "setavailability", element: <SetAvailability /> },
               { path: "interviewfeedback", element: <InterviewFeedback /> },
               { path: "details/:candidateId", element: <PanelCandidateDetails /> },

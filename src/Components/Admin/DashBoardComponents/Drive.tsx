@@ -33,6 +33,12 @@ interface Drive {
 
 type DateFilter = "ALL" | "TODAY" | "UPCOMING" | "PAST";
 
+/* ================= DATE HELPERS ================= */
+const today = new Date().toISOString().split("T")[0];
+const isToday = (d: string) => d === today;
+const isUpcoming = (d: string) => d > today;
+const isPast = (d: string) => d < today;
+
 /* ================= COMPONENT ================= */
 
 const Drives: React.FC = () => {
@@ -54,11 +60,7 @@ const Drives: React.FC = () => {
 
 
 
-  /* Date helpers */
-  const today = new Date().toISOString().split("T")[0];
-  const isToday = (d: string) => d === today;
-  const isUpcoming = (d: string) => d > today;
-  const isPast = (d: string) => d < today;
+
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {

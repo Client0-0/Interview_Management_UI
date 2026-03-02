@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../Styles/AttendanceManagement.css";
 import { FaExchangeAlt } from "react-icons/fa";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -68,56 +68,12 @@ const MOCK_DRIVES: DriveResponse[] = [
 const AttendanceManagement: React.FC = () => {
   const navigate = useNavigate();
 
-  const [drives, setDrives] = useState<DriveResponse[]>([]);
-  const [attendance, setAttendance] = useState<
-    Record<AttendanceKey, AttendanceStatus>
-  >({});
-  const [loading, setLoading] = useState(true);
+  // 🔇 setDrives kept in the backend version; for mock we only need the static value
+  const [drives] = useState<DriveResponse[]>(MOCK_DRIVES);
 
-  const [search, setSearch] = useState("");
-  const [selectedDrive, setSelectedDrive] = useState<string>("All");
-  const [showDriveFilter, setShowDriveFilter] = useState(false);
-
-  /* ================= LOAD DATA (MOCK) ================= */
-
-  useEffect(() => {
-    // 🔇 Original backend logic commented out – uncomment to reconnect
-    // const loadData = async () => {
-    //   try {
-    //     const token = localStorage.getItem("token");
-    //     if (!token) return;
-    //     const decoded = jwtDecode<JwtPayload>(token);
-    //     const mentorId = parseInt(
-    //       decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"], 10
-    //     );
-    //     if (isNaN(mentorId)) return;
-    //     const response = await getAllCandidatesAssignedMentor(mentorId);
-    //     const driveData: DriveResponse[] = response.data.data;
-    //     setDrives(driveData);
-    //     const attendanceMap: Record<AttendanceKey, AttendanceStatus> = {};
-    //     driveData.forEach(drive => {
-    //       drive.candidates.forEach(candidate => {
-    //         if (candidate.attendanceStatus) {
-    //           const key: AttendanceKey = `${drive.driveId}_${candidate.candidateId}`;
-    //           attendanceMap[key] = candidate.attendanceStatus;
-    //         }
-    //       });
-    //     });
-    //     setAttendance(attendanceMap);
-    //   } catch (error) {
-    //     console.error("Error loading attendance data", error);
-    //   } finally {
-    //     setLoading(false);
-    //   }
-    // };
-    // loadData();
-
-    /* 🟢 MOCK: use static data */
-    const driveData = MOCK_DRIVES;
-    setDrives(driveData);
-
+  const [attendance, setAttendance] = useState<Record<AttendanceKey, AttendanceStatus>>(() => {
     const attendanceMap: Record<AttendanceKey, AttendanceStatus> = {};
-    driveData.forEach(drive => {
+    MOCK_DRIVES.forEach(drive => {
       drive.candidates.forEach(candidate => {
         if (candidate.attendanceStatus) {
           const key: AttendanceKey = `${drive.driveId}_${candidate.candidateId}`;
@@ -125,9 +81,22 @@ const AttendanceManagement: React.FC = () => {
         }
       });
     });
-    setAttendance(attendanceMap);
-    setLoading(false);
-  }, []);
+    return attendanceMap;
+  });
+
+  const [loading] = useState(false);
+
+  // 🔇 When reconnecting to the backend, replace the useState initialisers above
+  //    with a useEffect that calls loadData() asynchronously, e.g.:
+  // useEffect(() => {
+  //   const loadData = async () => { ... await getAllCandidatesAssignedMentor(...); setDrives(...); setAttendance(...); setLoading(false); };
+  //   setLoading(true);
+  //   loadData();
+  // }, []);
+
+  const [search, setSearch] = useState("");
+  const [selectedDrive, setSelectedDrive] = useState<string>("All");
+  const [showDriveFilter, setShowDriveFilter] = useState(false);
 
   /* ================= ATTENDANCE (MOCK – local only) ================= */
 

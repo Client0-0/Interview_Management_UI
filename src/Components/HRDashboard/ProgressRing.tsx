@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 interface ProgressRingProps {
     radius?: number;
@@ -16,12 +16,7 @@ const ProgressRing: React.FC<ProgressRingProps> = ({
 }) => {
     const normalizedRadius = radius - stroke * 2;
     const circumference = normalizedRadius * 2 * Math.PI;
-    const [strokeDashoffset, setStrokeDashoffset] = useState(circumference);
-
-    useEffect(() => {
-        const targetOffset = circumference - (progress / 100) * circumference;
-        setStrokeDashoffset(targetOffset);
-    }, [progress, circumference]);
+    const strokeDashoffset = circumference - (progress / 100) * circumference;
 
     return (
         <div style={{ position: 'relative', width: radius * 2, height: radius * 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -56,7 +51,7 @@ const ProgressRing: React.FC<ProgressRingProps> = ({
                 />
             </svg>
             {/* Percentage Text centered */}
-            <div style={{ position: 'absolute', fontSize: '0.75rem', fontWeight: '600', color: '#64748b' }}>
+            <div style={{ position: 'absolute', fontSize: '0.5rem', fontWeight: '600', color: '#64748b' }}>
                 {progress}%
             </div>
         </div>

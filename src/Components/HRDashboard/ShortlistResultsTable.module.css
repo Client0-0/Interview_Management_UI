@@ -1,0 +1,279 @@
+.container {
+    margin-top: 2.5rem;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1.5px solid #e2e8f0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+.title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.downloadBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #6366f1;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.25rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+}
+
+.downloadBtn:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+}
+
+.azureBtn {
+    background: linear-gradient(135deg, #10b981, #34d399);
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+.azureBtn:hover {
+    background: linear-gradient(135deg, #059669, #10b981);
+}
+
+/* Table */
+.tableWrapper {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.table thead th {
+    background: #f1f5f9;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.85rem 1.25rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.tableRow {
+    cursor: pointer;
+    transition: background 0.15s;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.tableRow:hover {
+    background: #f8fafc;
+}
+
+.tableRow:last-child {
+    border-bottom: none;
+}
+
+.table tbody td {
+    padding: 1rem 1.25rem;
+    color: #334155;
+    vertical-align: top;
+}
+
+.filename {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.decisionTag {
+    padding: 0.2rem 0.65rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    display: inline-block;
+    min-width: 52px;
+    text-align: center;
+}
+
+.reasoning {
+    color: #64748b;
+    font-size: 0.875rem;
+    max-width: 280px;
+}
+
+/* Skills */
+.skillsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.skillTag {
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
+
+.missingSkillTag {
+    background: rgba(239, 68, 68, 0.08);
+    color: #dc2626;
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Modal */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+}
+
+.modalContent {
+    background: white;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 560px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: modalIn 0.2s ease-out;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modalHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+    background: #f8fafc;
+}
+
+.modalHeaderLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modalIconBg {
+    width: 44px;
+    height: 44px;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.modalIcon {
+    color: #6366f1;
+}
+
+.modalTitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.35rem;
+}
+
+.closeModalBtn {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.closeModalBtn:hover {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.modalBody {
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modalSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sectionHeading {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.sectionText {
+    color: #334155;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.reasoningText {
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.noMissingSkills {
+    color: #16a34a;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
