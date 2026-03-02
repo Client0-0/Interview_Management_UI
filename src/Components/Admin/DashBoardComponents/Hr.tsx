@@ -161,7 +161,7 @@ const HR: React.FC = () => {
                     className="menu-btn"
                     onClick={() => setOpenMenu(openMenu === i ? null : i)}
                   >
-                    ···
+                    <i className="fa-solid fa-ellipsis-vertical"></i>
                   </button>
 
                   {openMenu === i && (

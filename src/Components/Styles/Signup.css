@@ -14,7 +14,7 @@
   background: #fff;
   padding: 40px 50px;
   border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 
@@ -73,21 +73,33 @@
   gap: 10px;
 }
 
-small {
-    color: red;
+small.error-text {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+.input-box.error {
+  border: 1px solid #ef4444;
 }
 
 select {
-    width: 100%;
-    border: 1px solid #ddd;
-    padding: 5px;
-    border-radius: 5px;
+  width: 100%;
+  border: none;
+  padding: 2px;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: inherit;
+  appearance: none;
+  /* Hide default arrow to use custom if needed, or keep it */
 }
 
 select:focus {
-    border: none !important;
-    box-shadow: none !important;
-    box-sizing:unset;
+  border: none !important;
+  box-shadow: none !important;
+  box-sizing: unset;
 }
 
 .input-box input {
@@ -99,7 +111,7 @@ select:focus {
 }
 
 input:focus {
-    box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 /* icons inside input */
@@ -151,6 +163,7 @@ input:focus {
   font-weight: 500;
   text-decoration: none;
 }
+
 /* ——— Existing desktop/tablet styles remain the same ——— */
 
 

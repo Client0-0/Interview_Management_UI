@@ -155,7 +155,7 @@ const Panels: React.FC = () => {
                       setOpenMenu(i);
                     }}
                   >
-                    ···
+                    <i className="fa-solid fa-ellipsis-vertical"></i>
                   </button>
 
                   {openMenu === i && (

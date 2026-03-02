@@ -22,7 +22,7 @@ const TableActions: React.FC = () => {
           className="menu-btn"
           onClick={() => setOpen((prev) => !prev)}   // CLICK → TOGGLE
         >
-          ···
+          <i className="fa-solid fa-ellipsis-vertical"></i>
         </button>
 
         {open && (

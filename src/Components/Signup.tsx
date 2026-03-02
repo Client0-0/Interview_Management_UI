@@ -30,7 +30,7 @@ const SignUp: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<ErrorState>({});
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -81,13 +81,13 @@ const SignUp: React.FC = () => {
       navigate('/login');
     } catch (err) {
       if (axios.isAxiosError(err)) {
-      const message = err.response?.data?.error || "Something went wrong!";
-      notifyError(message);
-      console.log("Axios Error:", message);
-    } else {
-      notifyError("An unexpected error occurred");
-      console.log("Non-Axios Error:", err);
-    }
+        const message = err.response?.data?.error || "Something went wrong!";
+        notifyError(message);
+        console.log("Axios Error:", message);
+      } else {
+        notifyError("An unexpected error occurred");
+        console.log("Non-Axios Error:", err);
+      }
     }
     // Submit logic here
   };
@@ -96,7 +96,9 @@ const SignUp: React.FC = () => {
     <div className="login-wrapper">
       <div className="login-card">
         <div className="icon-circle">
-          <span className="lock-icon">🔐</span>
+          <span className="lock-icon">
+            <i className="fa-solid fa-lock"></i>
+          </span>
         </div>
 
         <h2 className="title">Create an Account</h2>
@@ -105,7 +107,7 @@ const SignUp: React.FC = () => {
         {/* Username */}
         <div className="form-group">
           <label>Username</label>
-          <div className="input-box">
+          <div className={`input-box ${errors.Username ? 'error' : ''}`}>
             <span className="input-icon">
               <i className="fa-solid fa-user text-gray-400 text-lg"></i>
             </span>
@@ -116,16 +118,14 @@ const SignUp: React.FC = () => {
               onChange={handleChange}
             />
           </div>
-          {errors.Username && <small>{errors.Username}</small>}
+          {errors.Username && <small className="error-text">{errors.Username}</small>}
         </div>
 
         {/* Role */}
         <div className="form-group">
           <label>Role</label>
-          <div className="input-box">
-            <span className="input-icon">
-              <i className="fa-solid fa-user-gear text-gray-400 text-lg"></i>
-            </span>
+          <div className={`input-box ${errors.Role ? 'error' : ''}`}>
+
             <select name="Role" onChange={handleChange}>
               <option value="">Select role</option>
               <option value="hr">HR</option>
@@ -133,13 +133,13 @@ const SignUp: React.FC = () => {
               <option value="mentor">Mentor</option>
             </select>
           </div>
-          {errors.Role && <small>{errors.Role}</small>}
+          {errors.Role && <small className="error-text">{errors.Role}</small>}
         </div>
 
         {/* Email */}
         <div className="form-group">
           <label>Email</label>
-          <div className="input-box">
+          <div className={`input-box ${errors.Email ? 'error' : ''}`}>
             <span className="input-icon">
               <i className="fa-solid fa-envelope text-gray-400 text-lg"></i>
             </span>
@@ -150,24 +150,24 @@ const SignUp: React.FC = () => {
               onChange={handleChange}
             />
           </div>
-          {errors.Email && <small>{errors.Email}</small>}
+          {errors.Email && <small className="error-text">{errors.Email}</small>}
         </div>
 
         {/* Phone */}
         <div className="form-group">
           <label>Phone Number</label>
-          <div className="input-box">
+          <div className={`input-box ${errors.Phone ? 'error' : ''}`}>
             <span className="input-icon">
               <i className="fa-solid fa-phone text-gray-400 text-lg"></i>
             </span>
             <input
               type="text"
               name="PhoneNumber"
-              placeholder="10-digit number"
+              placeholder="Enter Number"
               onChange={handleChange}
             />
           </div>
-          {errors.Phone && <small>{errors.Phone}</small>}
+          {errors.Phone && <small className="error-text">{errors.Phone}</small>}
         </div>
 
         {/* Password */}

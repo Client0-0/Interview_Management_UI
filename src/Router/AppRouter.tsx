@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import ProtectedRoute from "./ProtectedRoute";
 import PageLoader from "./PageLoader";
+import RootLayout from "./RootLayout";
 //import AddHRModal from "../Components/Admin/AddDashBoardComponents/AddHrModel";
 import AddUserModal from "../Components/Admin/AddDashBoardComponents/AddUserModal";
 import UserView from "../Components/Admin/View/UserView";
@@ -33,6 +34,7 @@ import BulkUploadCandidates from "../Components/Admin/DashBoardComponents/BulkUp
 
 /* PUBLIC */
 const Login = lazy(() => import("../Components/Login/Login"));
+const Signup = lazy(() => import("../Components/Signup"));
 
 /* ADMIN */
 const AdminLayout = lazy(() => import("../Components/Admin/Layout/AdminLayout"));
@@ -64,294 +66,307 @@ const SetAvailability = lazy(() => import("../Components/PanelDashboard/SetAvail
 const PanelCandidateDetails = lazy(() => import("../Components/PanelDashboard/PanelCandidateDetails"));
 
 export const router = createBrowserRouter([
-  { path: "/", element: <Navigate to="/login" replace /> },
-
   {
-    path: "/login",
-    element: (
-      <Suspense fallback={<PageLoader />}>
-        <Login />
-      </Suspense>
-    ),
-  },
-
-  /* ================= ADMIN ================= */
-  {
-    element: <ProtectedRoute allowedRoles={["admin"]} />,
+    element: <RootLayout />,
     children: [
+      { path: "/", element: <Navigate to="/login" replace /> },
+
       {
-        path: "/admin",
+        path: "/login",
         element: (
           <Suspense fallback={<PageLoader />}>
-            <AdminLayout />
+            <Login />
           </Suspense>
         ),
+      },
+      {
+        path: "/signup",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <Signup />
+          </Suspense>
+        ),
+      },
+
+      /* ================= ADMIN ================= */
+      {
+        element: <ProtectedRoute allowedRoles={["admin"]} />,
         children: [
-          { index: true, element: <Navigate to="dashboard" replace /> },
-          { path: "dashboard", element: <AdminDashboard /> },
+          {
+            path: "/admin",
+            element: (
+              <Suspense fallback={<PageLoader />}>
+                <AdminLayout />
+              </Suspense>
+            ),
+            children: [
+              { index: true, element: <Navigate to="dashboard" replace /> },
+              { path: "dashboard", element: <AdminDashboard /> },
 
-          {
-            path: "users",
-            element: <Users />,          // 👈 parent
-            children: [
-              { path: "adduser", element: <AddUserModal /> }, // 👈 modal route
-              { path: "viewuser", element: <UserView /> },
-              { path: "edituser/:userId", element: <EditUserRoute /> },
               {
-                path: "deactivateuser/:userId",
-                element: <DeactivateUserRoute />,
-              }
-            ],
-          },
-
-          {
-            path: "candidates",
-            element: <Candidates />,
-            children: [
-              { path: "addcandidate", element: <AddCandidateModal /> },
-              { path: "viewcandidate", element: <CandidateView /> },
-              { path: "editcandidate/:candidateId", element: <CandidateEditRoute /> },
-              { path: "bulkupload", element: <BulkUploadCandidates onBack={() => window.history.back()} /> }
-            ],
-          },
-          {
-            path: "panels",
-            element: <Panels />,
-            children: [
-              { path: "addpanel", element: <AddPanelModal /> },
-              { path: "viewuser", element: <UserView /> },
-              { path: "edituser/:userId", element: <EditUserRoute /> },
-              { path: "deactivateuser/:userId", element: <DeactivateUserRoute /> }
-            ],
-          },
-          {
-            path: "mentors",
-            element: <Mentors />,
-            children: [
-              { path: "addmentor", element: <AddMentorModal /> }, // 👈 modal route
-              { path: "viewuser", element: <UserView /> },
-              { path: "edituser/:userId", element: <EditUserRoute /> },
-              {
-                path: "deactivateuser/:userId",
-                element: <DeactivateUserRoute />,
-              }
-            ],
-          },
-          {
-            path: "hr",
-            element: <HR />,
-            children: [
-              { path: "addhr", element: <AddHRModal /> }, // 👈 modal route
-              { path: "viewuser", element: <UserView /> },
-              { path: "edituser/:userId", element: <EditUserRoute /> },
-              {
-                path: "deactivateuser/:userId",
-                element: <DeactivateUserRoute />,
-              }
-            ],
-          },
-
-          {
-            path: "drives",
-            element: <Drives />,
-            children: [
-              {
-                path: "createdrive",
-                element: <DriveWizard onClose={() => window.history.back()} />,
+                path: "users",
+                element: <Users />,          // 👈 parent
+                children: [
+                  { path: "adduser", element: <AddUserModal /> }, // 👈 modal route
+                  { path: "viewuser", element: <UserView /> },
+                  { path: "edituser/:userId", element: <EditUserRoute /> },
+                  {
+                    path: "deactivateuser/:userId",
+                    element: <DeactivateUserRoute />,
+                  }
+                ],
               },
 
               {
-                path: "view/:id",
-                element: <DriveView mode="view" />,
+                path: "candidates",
+                element: <Candidates />,
                 children: [
-                  { index: true, element: <DriveInfo /> }, // default
-                  { path: "addcandidate", element: <AddCandidate /> },
-                  { path: "driveinfo", element: <DriveInfo /> },
-                  {
-                    path: "members",
-                    element: <DriveMembers />,
-                    children: [
-                      { index: true, element: <Navigate to="drivehr" replace /> },
-                      {
-                        path: "drivehr",
-                        element: <DriveHR />,
-                        children: [
-
-                          {
-                            path: "view/:userId",   // 👈 modal route
-                            element: <DriveViewMember />,
-                          },
-                        ],
-                      },
-                      {
-                        path: "drivementor",
-                        element: <DriveMentor />,
-                        children: [
-
-                          {
-                            path: "view/:userId",   // 👈 modal route
-                            element: <DriveViewMember />,
-                          },
-                        ],
-                      },
-                      {
-                        path: "drivepanel",
-                        element: <DrivePanel />,
-                        children: [
-
-                          {
-                            path: "view/:userId",   // 👈 modal route
-                            element: <DriveViewMember />,
-                          },
-                        ],
-                      },
-                    ],
-                  },
-
-                  { path: "config", element: <DriveConfig /> },
-                  {
-                    path: "candidates",
-                    element: <DriveCandidates />,
-                    children: [
-                      {
-                        path: "viewcandidate/:candidateId",
-                        element: <DriveViewCandidate />,
-                      },
-                    ],
-                  },
-
+                  { path: "addcandidate", element: <AddCandidateModal /> },
+                  { path: "viewcandidate", element: <CandidateView /> },
+                  { path: "editcandidate/:candidateId", element: <CandidateEditRoute /> },
+                  { path: "bulkupload", element: <BulkUploadCandidates onBack={() => window.history.back()} /> }
                 ],
               },
               {
-                path: "edit/:id",
-                element: <DriveView mode="edit" />,
+                path: "panels",
+                element: <Panels />,
                 children: [
-                  { index: true, element: <DriveInfo /> }, // default
-                  { path: "driveinfo", element: <DriveInfo /> },
-                  {
-                    path: "members",
-                    element: <DriveMembers />,
-                    children: [
-                      { index: true, element: <Navigate to="drivehr" replace /> },
-                      {
-                        path: "drivehr",
-                        element: <DriveHR />,
-                        children: [
-
-                          {
-                            path: "view/:userId",   // 👈 modal route
-                            element: <DriveViewMember />,
-                          },
-                        ],
-                      },
-                      {
-                        path: "drivementor",
-                        element: <DriveMentor />,
-                        children: [
-
-                          {
-                            path: "view/:userId",   // 👈 modal route
-                            element: <DriveViewMember />,
-                          },
-                        ],
-                      },
-                      {
-                        path: "drivepanel",
-                        element: <DrivePanel />,
-                        children: [
-
-                          {
-                            path: "view/:userId",   // 👈 modal route
-                            element: <DriveViewMember />,
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                  { path: "config", element: <DriveConfig /> },
-                  {
-                    path: "candidates",
-                    element: <DriveCandidates />,
-                    children: [
-                      {
-                        path: "viewcandidate/:candidateId",
-                        element: <DriveViewCandidate />,
-                      },
-                    ],
-                  },
-
+                  { path: "addpanel", element: <AddPanelModal /> },
+                  { path: "viewuser", element: <UserView /> },
+                  { path: "edituser/:userId", element: <EditUserRoute /> },
+                  { path: "deactivateuser/:userId", element: <DeactivateUserRoute /> }
                 ],
               },
-              { path: "viewuser", element: <UserView /> },
+              {
+                path: "mentors",
+                element: <Mentors />,
+                children: [
+                  { path: "addmentor", element: <AddMentorModal /> }, // 👈 modal route
+                  { path: "viewuser", element: <UserView /> },
+                  { path: "edituser/:userId", element: <EditUserRoute /> },
+                  {
+                    path: "deactivateuser/:userId",
+                    element: <DeactivateUserRoute />,
+                  }
+                ],
+              },
+              {
+                path: "hr",
+                element: <HR />,
+                children: [
+                  { path: "addhr", element: <AddHRModal /> }, // 👈 modal route
+                  { path: "viewuser", element: <UserView /> },
+                  { path: "edituser/:userId", element: <EditUserRoute /> },
+                  {
+                    path: "deactivateuser/:userId",
+                    element: <DeactivateUserRoute />,
+                  }
+                ],
+              },
+
+              {
+                path: "drives",
+                element: <Drives />,
+                children: [
+                  {
+                    path: "createdrive",
+                    element: <DriveWizard onClose={() => window.history.back()} />,
+                  },
+
+                  {
+                    path: "view/:id",
+                    element: <DriveView mode="view" />,
+                    children: [
+                      { index: true, element: <DriveInfo /> }, // default
+                      { path: "addcandidate", element: <AddCandidate /> },
+                      { path: "driveinfo", element: <DriveInfo /> },
+                      {
+                        path: "members",
+                        element: <DriveMembers />,
+                        children: [
+                          { index: true, element: <Navigate to="drivehr" replace /> },
+                          {
+                            path: "drivehr",
+                            element: <DriveHR />,
+                            children: [
+
+                              {
+                                path: "view/:userId",   // 👈 modal route
+                                element: <DriveViewMember />,
+                              },
+                            ],
+                          },
+                          {
+                            path: "drivementor",
+                            element: <DriveMentor />,
+                            children: [
+
+                              {
+                                path: "view/:userId",   // 👈 modal route
+                                element: <DriveViewMember />,
+                              },
+                            ],
+                          },
+                          {
+                            path: "drivepanel",
+                            element: <DrivePanel />,
+                            children: [
+
+                              {
+                                path: "view/:userId",   // 👈 modal route
+                                element: <DriveViewMember />,
+                              },
+                            ],
+                          },
+                        ],
+                      },
+
+                      { path: "config", element: <DriveConfig /> },
+                      {
+                        path: "candidates",
+                        element: <DriveCandidates />,
+                        children: [
+                          {
+                            path: "viewcandidate/:candidateId",
+                            element: <DriveViewCandidate />,
+                          },
+                        ],
+                      },
+
+                    ],
+                  },
+                  {
+                    path: "edit/:id",
+                    element: <DriveView mode="edit" />,
+                    children: [
+                      { index: true, element: <DriveInfo /> }, // default
+                      { path: "driveinfo", element: <DriveInfo /> },
+                      {
+                        path: "members",
+                        element: <DriveMembers />,
+                        children: [
+                          { index: true, element: <Navigate to="drivehr" replace /> },
+                          {
+                            path: "drivehr",
+                            element: <DriveHR />,
+                            children: [
+
+                              {
+                                path: "view/:userId",   // 👈 modal route
+                                element: <DriveViewMember />,
+                              },
+                            ],
+                          },
+                          {
+                            path: "drivementor",
+                            element: <DriveMentor />,
+                            children: [
+
+                              {
+                                path: "view/:userId",   // 👈 modal route
+                                element: <DriveViewMember />,
+                              },
+                            ],
+                          },
+                          {
+                            path: "drivepanel",
+                            element: <DrivePanel />,
+                            children: [
+
+                              {
+                                path: "view/:userId",   // 👈 modal route
+                                element: <DriveViewMember />,
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      { path: "config", element: <DriveConfig /> },
+                      {
+                        path: "candidates",
+                        element: <DriveCandidates />,
+                        children: [
+                          {
+                            path: "viewcandidate/:candidateId",
+                            element: <DriveViewCandidate />,
+                          },
+                        ],
+                      },
+
+                    ],
+                  },
+                  { path: "viewuser", element: <UserView /> },
+                ],
+
+              },
             ],
-
           },
         ],
       },
-    ],
-  },
 
-  /* ================= HR ================= */
-  {
-    element: <ProtectedRoute allowedRoles={["hr"]} />,
-    children: [
+      /* ================= HR ================= */
       {
-        path: "/hr",
-        element: <HRLayout />,
+        element: <ProtectedRoute allowedRoles={["hr"]} />,
         children: [
-          { index: true, element: <HRDashboard /> },
-          { path: "candidates", element: <CandidatesToday onViewDetails={(c) => console.log('View', c)} /> },
-          { path: "candidatemanagement", element: <CandidateManagement onBulkUpload={() => { }} onViewDetails={(c) => console.log('View', c)} /> }
-        ],
-      },
-    ],
-  },
-
-  /* ================= MENTOR ================= */
-  {
-    element: <ProtectedRoute allowedRoles={["mentor"]} />,
-    children: [
-      {
-        path: "/mentor",
-        element: <MentorLayout />,
-        children: [
-          { index: true, element: <MentorDashboard /> },
-
           {
-            path: "attendance",
-            element: <AttendanceManagement />,
-          },
-          {
-            path: "availability",
-            element: <Availability />,
-          },
-          {
-            path: "reassignpanel/:candidateId",
-            element: <ReassignPage />,
-          },
-          {
-            path: "interviewfeedback",
-            element: <InterviewFeedback />,
+            path: "/hr",
+            element: <HRLayout />,
+            children: [
+              { index: true, element: <HRDashboard /> },
+              { path: "candidates", element: <CandidatesToday onViewDetails={(c) => console.log('View', c)} /> },
+              { path: "candidatemanagement", element: <CandidateManagement onBulkUpload={() => { }} onViewDetails={(c) => console.log('View', c)} /> }
+            ],
           },
         ],
       },
-    ],
-  },
 
-  /* ================= PANEL ================= */
-  {
-    element: <ProtectedRoute allowedRoles={["panel"]} />,
-    children: [
+      /* ================= MENTOR ================= */
       {
-        path: "/panel",
-        element: <PanelLayout />,
+        element: <ProtectedRoute allowedRoles={["mentor"]} />,
         children: [
-          { index: true, element: <PanelDashboard /> },
-          { path: "reassign/:id", element: <Reassign /> },
-          { path: "reassign/:id", element: <Reassign /> },
-          { path: "setavailability", element: <SetAvailability /> },
-          { path: "interviewfeedback", element: <InterviewFeedback /> },
-          { path: "details/:candidateId", element: <PanelCandidateDetails /> },
+          {
+            path: "/mentor",
+            element: <MentorLayout />,
+            children: [
+              { index: true, element: <MentorDashboard /> },
+
+              {
+                path: "attendance",
+                element: <AttendanceManagement />,
+              },
+              {
+                path: "availability",
+                element: <Availability />,
+              },
+              {
+                path: "reassignpanel/:candidateId",
+                element: <ReassignPage />,
+              },
+              {
+                path: "interviewfeedback",
+                element: <InterviewFeedback />,
+              },
+            ],
+          },
+        ],
+      },
+
+      /* ================= PANEL ================= */
+      {
+        element: <ProtectedRoute allowedRoles={["panel"]} />,
+        children: [
+          {
+            path: "/panel",
+            element: <PanelLayout />,
+            children: [
+              { index: true, element: <PanelDashboard /> },
+              { path: "reassign/:id", element: <Reassign /> },
+              { path: "reassign/:id", element: <Reassign /> },
+              { path: "setavailability", element: <SetAvailability /> },
+              { path: "interviewfeedback", element: <InterviewFeedback /> },
+              { path: "details/:candidateId", element: <PanelCandidateDetails /> },
+            ],
+          },
         ],
       },
     ],

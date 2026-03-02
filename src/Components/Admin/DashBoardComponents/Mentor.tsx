@@ -177,7 +177,7 @@ const Mentor: React.FC = () => {
                       setOpenMenu(openMenu === i ? null : i)
                     }
                   >
-                    ···
+                    <i className="fa-solid fa-ellipsis-vertical"></i>
                   </button>
 
                   {openMenu === i && (
