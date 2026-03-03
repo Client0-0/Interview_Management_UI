@@ -36,6 +36,8 @@ import BulkUploadCandidates from "../Components/Admin/DashBoardComponents/BulkUp
 const Login = lazy(() => import("../Components/Login/Login"));
 const Signup = lazy(() => import("../Components/Signup"));
 const ForgotPassword = lazy(() => import("../Components/ForgetPassword/ForgotPassword"));
+const OtpScreen = lazy(() => import("../Components/Otp/Otp"));
+const SetNewPassword = lazy(() => import("../Components/SetNewPassword/SetNewPassword"));
 const ChangePasswordPage = lazy(() => import("../Components/ChangePassword/ChangePasswordPage"));
 
 /* ADMIN */
@@ -97,6 +99,22 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <ForgotPassword />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/otp",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <OtpScreen />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/set-new-password",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <SetNewPassword />
           </Suspense>
         ),
       },
