@@ -2,7 +2,7 @@ import axios from "axios";
 import { getItem } from "./LocalStorage.Service";
 
 const api = axios.create({
-  baseURL: "https://localhost:7154/api",
+  baseURL: "https://harness-559519829208.asia-south1.run.app/api",
 });
 
 api.interceptors.request.use(
