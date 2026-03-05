@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import React, { useState } from "react";
 import "../Styles/AttendanceManagement.css";
 import { FaExchangeAlt } from "react-icons/fa";

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import React from "react";
 import { useOutletContext } from "react-router-dom";
 import "./Styles/DriveInfo.css";

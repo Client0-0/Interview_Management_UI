@@ -23,7 +23,7 @@ interface RemoveTarget {
 
 const DriveHR: React.FC = () => {
   const { driveId, editable } = useOutletContext<DriveMemberContext>();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [hrs, setHrs] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -53,6 +53,7 @@ const DriveHR: React.FC = () => {
 
   useEffect(() => {
     fetchHRs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [driveId]);
 
   /* ================= OPEN ADD MODAL ================= */
@@ -264,9 +265,9 @@ const DriveHR: React.FC = () => {
 
       {/* VIEW HR */}
       <div className="drive-members-wrapper">
-  {/* role tabs etc */}
-      <Outlet />
-    </div>
+        {/* role tabs etc */}
+        <Outlet />
+      </div>
 
     </div>
   );

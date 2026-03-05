@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+ 
 import React, { useEffect, useState } from "react";
 import "../Styles/MentorDashboard.css";
 import {

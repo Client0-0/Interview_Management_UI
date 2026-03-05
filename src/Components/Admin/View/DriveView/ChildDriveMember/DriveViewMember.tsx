@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+ 
 import React, { useEffect, useState } from "react";
 import "./Styles/DriveViewMember.css";
 import { getUserById } from "../../../../../Services/User.Service";
